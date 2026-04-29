@@ -1,0 +1,15 @@
+// GWW3 Symbolic Logic — Silicon Strait predicates
+//
+// Placeholder. The formal model grows here over the coming weeks.
+//
+// Day ~14 will introduce the first Nash-equilibrium analysis with
+// players (PRC, ROC, USA, JPN, ASEAN-bloc, EU) and action sets.
+//
+// Day ~30 will introduce the Belief-Subgraph: what each actor
+// believes the others will do, distinct from what they will
+// actually do.
+//
+// Reference: https://github.com/IngoGiebel/games-of-ww3
+//   (specifically the GSL grammar in src/hassaleh/engine/gsl_ops.lark
+//    in the deterministic Hassaleh subset; the stochastic GWW3
+//    runtime is the target we will write toward.)
