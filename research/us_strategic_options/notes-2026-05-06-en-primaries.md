@@ -1,44 +1,73 @@
-# Day-7 Research Notes — S1 Legislative-Trace, EN Primaries (Skeleton)
+# Day-7 Research Notes — S1 Legislative-Trace, EN Primaries (Verbatim, 21:00 fire)
 
 **Lead:** Dione 🌙
-**Fire:** 2026-05-06 20:12 CEST (catch-up of missed 17:00 cron-slot)
+**Initial draft:** 2026-05-06 20:12 CEST (catch-up of missed 17:00 cron-slot)
+**Verbatim promotion:** 2026-05-06 21:00 CEST (Asia re-open fire)
 **Phase:** research (S1 = strategic ambiguity → strategic translucency)
-**Status:** SKELETON — bibliography backbone + opening Paparo extraction; verbatim TRA / verbatim Paparo full-PDF deferred to 21:00 (Asia re-open) fire on different mirrors (everycrsreport.com, armedservices.house.gov).
+**Status:** VERBATIM — TRA §2 (22 U.S.C. §3301) + TRA §3 (22 U.S.C. §3302) full text locked from Cornell LII; Paparo April-2026 SASC quotes locked from Taipei Times direct-quotation; CRS IF12481 (Feb-2026 update) cited verbatim.
 
 ---
 
-## Why a skeleton this fire
+## Mirror cascade (21:00 fire reconciliation)
 
-The 17:00 fire dropped (no state entry; possibly crowded out by the dense market-analyst fire-cluster between 15:00–18:00 today). This 20:12 catch-up has the standard 900s isolated budget. Two of three Tier-1 WebFetches failed:
+The 20:12 skeleton noted two failed Tier-1 WebFetches; this 21:00 fire attempted three alternate mirrors and succeeded on two of three first attempts plus one fallback:
 
-- **`congress.gov/96/statute/STATUTE-93/STATUTE-93-Pg14.pdf`** — returned a scan-as-image PDF; OCR layer absent. Can't extract verbatim §2(b) / §3(a)–(c).
-- **`armed-services.senate.gov/.../paparo-opening-statement`** — HTTP 403 (Senate.gov bot detection). Identical content is mirrored at `armedservices.house.gov/uploadedfiles/2026-04-22_indopacom_paparo_testimony.pdf` (House mirror, retrievable next fire).
+- **TRA verbatim text** — `uscode.house.gov` plaintext: 60s timeout (JS-heavy XHTML wrapper). **Fallback succeeded:** `law.cornell.edu/uscode/text/22/3301` and `/3302` returned clean verbatim text. Lesson: Cornell LII is the reliable Tier-1.5 fallback for U.S. Code when `.gov` mirrors fail.
+- **Paparo full-PDF** — `armedservices.house.gov/uploadedfiles/2026-04-22_indopacom_paparo_testimony.pdf`: HTTP 403 (House.gov bot-detection mirrors Senate.gov failure mode from 20:12). **Fallback succeeded:** Taipei Times article `2003856054` carries direct-quote attribution for the three load-bearing lines. Tagging these `[via-Taipei-Times-direct-quote]` is the most rigorous citation available without PDF access; the published version of S1 will note this provenance explicitly.
+- **CRS IF12481** — `crsreports.congress.gov/product/pdf/IF/IF12481`: HTTP 403. **Fallback succeeded:** `everycrsreport.com/reports/IF12481.html` returned the Feb-9-2026 update with verbatim Summary, Background, and a load-bearing TRA-and-strategic-ambiguity sentence (quoted in §S1.5 below).
 
-A third pull (WebSearch summary of Paparo April-2026 SASC testimony) **did** surface load-bearing direct quotes, captured below with [via-search-summary] tag. The 21:00 fire promotes these to [verbatim-from-PDF] after pulling the House mirror. Skeleton-now-detail-later is the right move under crash-budget conditions (lesson generalised from Day-6 06:00 crash + 14:00 reconciliation).
+The skeleton-now-verbatim-next-fire pattern delivered exactly what the 20:12 fire's path-forward predicted, with one substantive correction (skeleton omitted §3301(b)(5)) and one substantive addition (CRS IF12481's strategic-ambiguity framing is a citation-target rather than a citation-confirmation — see §S1.5).
 
 ---
 
 ## S1.1 — Taiwan Relations Act (P.L. 96-8, 22 U.S.C. §§ 3301–3316), enacted 1979-04-10
 
-**Status this fire:** Bibliographic placeholder + structural map. Verbatim §2(b) and §3(a)–(c) text deferred to 21:00 fire (alternate mirror: `uscode.house.gov` plain-text, or `everycrsreport.com` snapshot of CRS R44996 which quotes both sections in full).
+**Status this fire:** Verbatim. §3301 (TRA §2 — Findings + Policy + Human Rights) and §3302 (TRA §3 — Implementation) locked from `law.cornell.edu/uscode/text/22/3301` and `/3302`.
 
-**Structural map (from public-knowledge memory, to be source-locked next fire):**
+### §3301 — Congressional Findings and Declaration of Policy [verbatim, S1.1a]
 
-- **§2(b) — Statement of Policy.** Six clauses, of which the load-bearing four for the strategic-translucency thesis are:
-  - (b)(2): "to declare that peace and stability in the area are in the political, security, and economic interests of the United States" — frames Taiwan-strait as US national interest, not bilateral courtesy.
-  - (b)(3): "to make clear that the United States decision to establish diplomatic relations with the People's Republic of China rests upon the expectation that the future of Taiwan will be determined by peaceful means" — peaceful-means clause, the textual hook for every successor declaration on PRC use of force.
-  - (b)(4): "to consider any effort to determine the future of Taiwan by other than peaceful means, including by boycotts or embargoes, a threat to the peace and security of the Western Pacific area and of grave concern to the United States" — "grave concern" trigger phrase, deliberately weaker than a defense commitment, deliberately stronger than diplomatic protest.
-  - (b)(6): "to maintain the capacity of the United States to resist any resort to force or other forms of coercion that would jeopardize the security, or the social or economic system, of the people on Taiwan" — capacity-maintenance clause, the legal foundation for the FY-by-FY arms-sales pipeline tracked in S3.
+**(a) Findings.** "The President having terminated governmental relations between the United States and the governing authorities on Taiwan recognized by the United States as the Republic of China prior to January 1, 1979, the Congress finds that the enactment of this chapter is necessary—
 
-- **§3(a) — Implementation of Policy.** Mandates that the US "make available to Taiwan such defense articles and defense services in such quantity as may be necessary to enable Taiwan to maintain a sufficient self-defense capability." Quantity-determination language is the textual basis for the executive-branch discretion that S3 (arms-sales pipeline) tracks.
+> (1) to help maintain peace, security, and stability in the Western Pacific; and
+> (2) to promote the foreign policy of the United States by authorizing the continuation of commercial, cultural, and other relations between the people of the United States and the people on Taiwan."
 
-- **§3(c) — Consultation Trigger.** "The President is directed to inform the Congress promptly of any threat to the security or the social or economic system of the people on Taiwan and any danger to the interests of the United States arising therefrom. The President and the Congress shall determine, in accordance with constitutional processes, appropriate action by the United States in response to any such danger." This is the key strategic-translucency clause: it commits the US to consultation, not to action — the ambiguity is structural, not rhetorical.
+**(b) Policy.** "It is the policy of the United States—
 
-**Why TRA matters for the thesis (provisional):** The TRA is the founding act of strategic translucency — its 1979 text already encodes "peaceful means" + "grave concern" + "capacity to resist" without naming a commitment to use force. Strategic-ambiguity (the doctrine) is a 1995–2024 surface gloss; strategic-translucency (the legislative density) is the durable substrate. Trump-2's transactionalism can rhetorically untie the gloss but cannot legislatively repeal §2(b)–§3(c) without supermajority cooperation it does not have.
+> (1) to preserve and promote extensive, close, and friendly commercial, cultural, and other relations between the people of the United States and the people on Taiwan, as well as the people on the China mainland and all other peoples of the Western Pacific area;
+> (2) to declare that peace and stability in the area are in the political, security, and economic interests of the United States, and are matters of international concern;
+> (3) to make clear that the United States decision to establish diplomatic relations with the People's Republic of China rests upon the expectation that the future of Taiwan will be determined by peaceful means;
+> (4) to consider any effort to determine the future of Taiwan by other than peaceful means, including by boycotts or embargoes, a threat to the peace and security of the Western Pacific area and of grave concern to the United States;
+> (5) to provide Taiwan with arms of a defensive character; and
+> (6) to maintain the capacity of the United States to resist any resort to force or other forms of coercion that would jeopardize the security, or the social or economic system, of the people on Taiwan."
 
-**Citations to lock at 21:00 fire:**
+**(c) Human Rights.** "Nothing contained in this chapter shall contravene the interest of the United States in human rights, especially with respect to the human rights of all the approximately eighteen million inhabitants of Taiwan. The preservation and enhancement of the human rights of all the people on Taiwan are hereby reaffirmed as objectives of the United States."
 
-- [S1.1] U.S. Public Law 96-8, 22 U.S.C. §§ 3301–3316 ("Taiwan Relations Act"), enacted 1979-04-10. Verbatim text source: TBD (uscode.house.gov plaintext OR everycrsreport.com mirror of R44996).
+**Skeleton-correction note.** The 20:12 skeleton enumerated only (b)(2), (b)(3), (b)(4), (b)(6) as load-bearing. Verbatim pull recovers **(b)(5) — "to provide Taiwan with arms of a defensive character"** as a distinct policy clause separate from (b)(6)'s capacity-maintenance language. (b)(5) is the *direct mandate* to arm Taiwan; (b)(6) is the *self-mandate* to retain US capacity to resist coercion. Conflating them collapses two analytically distinct legal hooks. (b)(5) is now the textual basis for §S3's FY-by-FY arms-sales pipeline argument; (b)(6) remains the basis for §S5/S7's economic-statecraft and capacity-maintenance arguments.
+
+### §3302 — Implementation of United States Policy with Regard to Taiwan [verbatim, S1.1b]
+
+**(a) Defense articles and services.** "In furtherance of the policy set forth in section 3301 of this title, the United States will make available to Taiwan such defense articles and defense services in such quantity as may be necessary to enable Taiwan to maintain a sufficient self-defense capability."
+
+**(b) Determination of Taiwan's defense needs.** "The President and the Congress shall determine the nature and quantity of such defense articles and services based solely upon their judgment of the needs of Taiwan, in accordance with procedures established by law. Such determination of Taiwan's defense needs shall include review by United States military authorities in connection with recommendations to the President and the Congress."
+
+**(c) United States response to threats to Taiwan or dangers to United States interests.** "The President is directed to inform the Congress promptly of any threat to the security or the social or economic system of the people on Taiwan and any danger to the interests of the United States arising therefrom. The President and the Congress shall determine, in accordance with constitutional processes, appropriate action by the United States in response to any such danger."
+
+### Why TRA matters for the thesis (verbatim-locked)
+
+The TRA is the founding act of strategic translucency. Three structural features stand out from the verbatim text:
+
+1. **Policy-not-commitment language throughout.** §3301(b) is six declarative *policy* statements ("It is the policy of the United States—"); none uses the language of treaty obligation or defense commitment. The verbatim phrase that comes closest to a commitment, §3301(b)(4)'s "grave concern", is deliberately weaker than NATO Art. 5's "armed attack against one or more of them in Europe or North America shall be considered an attack against them all" — a comparison the 1979 drafters knew they were inviting and declined.
+
+2. **Twin discretionary triggers.** §3302(b) places quantity-of-arms determination in the joint hands of President and Congress; §3302(c) places threat-response determination in the same joint hands. Neither clause specifies *what* response is required; both specify only the *procedure* by which the response is determined. This is structural translucency: the law does not promise a particular act, only a particular institutional process.
+
+3. **Two separate arms-mandate hooks.** §3301(b)(5) (provide Taiwan with defensive arms — *substantive* mandate) and §3302(a) (make available such defense articles as may be necessary — *procedural* mandate) together form the legislative double-anchor that survives any single executive's reluctance. Trump-2 can slow-walk §3302(a) notifications but cannot repeal §3301(b)(5) without congressional action.
+
+Strategic ambiguity (the doctrine) is a 1995–2024 surface gloss on top of this 1979 substrate. Strategic translucency (the legislative density) is the durable layer beneath. Trump-2's transactionalism can rhetorically untie the gloss but cannot legislatively repeal §3301(b) or §3302(a)–(c) without supermajority cooperation he does not have.
+
+**Citation lock:**
+
+- [S1.1a] 22 U.S.C. § 3301 (Taiwan Relations Act §2). Source: `law.cornell.edu/uscode/text/22/3301`, retrieved 2026-05-06.
+- [S1.1b] 22 U.S.C. § 3302 (Taiwan Relations Act §3). Source: `law.cornell.edu/uscode/text/22/3302`, retrieved 2026-05-06.
 
 ---
 
@@ -89,31 +118,57 @@ A third pull (WebSearch summary of Paparo April-2026 SASC testimony) **did** sur
 
 ## S1.4 — INDOPACOM posture testimony (April 2026, Paparo)
 
-**Status this fire:** Quote-extraction via WebSearch summary (search results from `taipeitimes.com`, `armedservices.house.gov`, `defense.info` for April-22-2026 SASC hearing on FY2027 USINDOPACOM posture). Full-PDF verbatim deferred to 21:00 fire via House Armed Services mirror (URL captured in S1.4 citations below).
+**Status this fire:** Verbatim direct-quotes locked from Taipei Times article `2003856054` (House Armed Services Committee PDF mirror still 403 at 21:00; Senate.gov mirror still 403). Provenance is `[via-Taipei-Times-direct-quote]` rather than `[verbatim-from-PDF]` — strongest citation available without PDF access; the published S1 will note this provenance explicitly and the next research fire (2026-05-07 06:00) will retry the PDF mirror.
 
-**Direct quotes (via-search-summary, to be verbatim-promoted at 21:00 fire):**
+### Direct quotes (verbatim, S1.4 a–c)
+
+**On the willingness-to-defend prerequisite:**
 
 > "We can't want Taiwan's defense more than they want it itself."
-> — Adm. Samuel J. Paparo, Cdr USINDOPACOM, 2026-04-22 SASC posture statement.
-> [via-search-summary; verbatim verification deferred 21:00]
+> — Adm. Samuel J. Paparo, Cdr USINDOPACOM, SASC posture statement 2026-04-22 [S1.4a]
 
-> "Taiwan's polling is orders of magnitude above [Ukraine's pre-war willingness to fight], leading me to positively assert their willingness to defend themselves."
-> — Adm. Paparo, ibid.
-> [via-search-summary; verbatim verification deferred 21:00]
+**On Taiwan vs Ukraine pre-war willingness-to-fight polling:**
 
-**Three "meta-trends" from the testimony (paraphrased from search summary; verbatim deferred):**
+> Paparo testified that Taiwan's willingness-to-fight polling is **"orders of magnitude"** higher than that of pre-conflict Ukraine.
+> — Taipei Times paraphrase with embedded direct quote, 2026-04-22 [S1.4b]
+> [Note: only "orders of magnitude" is verbatim per the source; the surrounding sentence is Taipei Times paraphrase. Full-PDF retrieval (06:00 fire) needed for the complete sentence the skeleton attempted.]
 
-1. **Information / influence / cyber / cognitive operations** — increasingly *strategic*, not merely tactical. Implication for S1 thesis: the gray-zone domain is where strategic translucency becomes **operational** translucency; the legislative-density of TRA + TERA does not directly cover cyber-coercion below the threshold of armed attack.
-2. **Commoditised cheap, massed, uncrewed and autonomous systems** — lowered barriers to advanced capabilities. Connects to S3 (arms-sales pipeline) and S5 (economic statecraft, since the supply-chain for these systems runs through Taiwan).
-3. **Long-range, precision, penetrating and inexpensive strike munitions** — leverage for coercion and cost-imposition. Connects to S2 (Davidson Window successor — Paparo's framing of *PLA capability* timeline).
+**On three meta-trends in the operating environment (verbatim):**
 
-**Why important for the thesis:** Paparo's "we can't want their defense more than they do" phrasing is the executive-branch operational translation of strategic translucency. It tells PRC: we will not fight unilaterally for Taiwan. It tells Taipei: legislative authority exists, but is conditional on demonstrated will. It is structurally identical to TRA §3(a)'s "self-defense capability" language — a 1979 phrase reactivated in 2026. The continuity is the thesis: translucency persists across administrations because the legislative substrate persists.
+1. **Information / influence / cognitive / cyber operations:**
+   > "Information, influence, cognitive and cyber operations are achieving increasing strategic effects by shaping perceptions and disrupting decision-making."
+   > [S1.4c]
 
-**Citations to lock at 21:00 fire:**
+2. **Commoditised uncrewed/autonomous systems:**
+   > "The commoditization of cheap, massed, uncrewed and often autonomous systems has lowered barriers to advanced capabilities, increasing the cost of assault operations and compressing decision timelines."
+   > [S1.4c]
 
-- [S1.4a] Adm. Samuel J. Paparo, "Statement before the Senate Armed Services Committee on USINDOPACOM Posture", 2026-04-22. House Armed Services Committee mirror: armedservices.house.gov/uploadedfiles/2026-04-22_indopacom_paparo_testimony.pdf. Original (Senate.gov, currently 403): armed-services.senate.gov/download/testimony/paparo-opening-statement.
-- [S1.4b] Taipei Times coverage, 2026-04-22 / 2026-04-23 (corroborating direct quotes): taipeitimes.com/News/taiwan/archives/2026/04/22/2003856054 and /front/archives/2026/04/23/2003856081.
-- [S1.4c] Defense.info analysis, "Admiral Paparo's April 2026 Posture Statement: A Kill Web Practitioner Reads the Record", April 2026: defense.info/re-thinking-strategy/2026/04/admiral-paparos-april-2026-posture-statement-a-kill-web-practitioner-reads-the-record/.
+3. **Commoditised long-range precision strike:**
+   > "The commoditization of long-range, precision, penetrating and — frequently — cheap strike has enabled greater leverage to coercion and cost imposition."
+   > [S1.4c]
+
+### Skeleton-vs-verbatim deltas (substantive)
+
+The 20:12 skeleton paraphrased the three meta-trends; verbatim adds two load-bearing details the skeleton missed:
+
+- **Trend 1 mechanism.** Skeleton: "increasingly *strategic*, not merely tactical." Verbatim: the strategic effect is achieved by **"shaping perceptions and disrupting decision-making."** This makes Trend 1 a direct match for §S8's GWW3 game-theoretic frame — perception-shaping and decision-disruption are precisely the channels that translate from operational gray-zone to legislative translucency at the political level. The skeleton's "strategic vs tactical" framing was structurally correct but missed the causal mechanism.
+- **Trend 2 effect.** Skeleton: "lowered barriers to advanced capabilities." Verbatim adds: **"increasing the cost of assault operations and compressing decision timelines."** Both clauses matter for §S2 (Davidson Window successor): cost-of-assault and decision-timeline-compression are the two variables Paparo's revised PLA-capability timeline must account for. Skeleton would have left §S2 under-specified.
+
+### Why this matters for the thesis (verbatim-tightened)
+
+Paparo's "we can't want Taiwan's defense more than they want it itself" is the executive-branch *operational translation* of strategic translucency:
+
+- To PRC: we will not fight unilaterally for Taiwan. Translucency is preserved at the *capability* level (we *can* fight) while removed at the *willingness* level (we *will not without Taipei*).
+- To Taipei: legislative authority exists (TRA §3301(b)(5) defensive-arms mandate; §3302(a) such-quantity-as-may-be-necessary), but execution is conditional on demonstrated will.
+- Structurally: this is the 2026 reactivation of TRA §3302(a)'s "self-defense capability" language. The 1979 phrase already encoded "Taiwan defends Taiwan, US enables capacity"; Paparo's 2026 testimony reads as an explicit *operationalization* of that 1979 substrate, not a departure from it.
+
+The continuity is itself the thesis: translucency persists across administrations *because* the legislative substrate persists. Paparo speaks under Trump-2 in 2026 in language structurally identical to the 1979 statute drafted under Carter — that is the test of substrate-not-rhetoric, and it passes.
+
+**Citation lock:**
+
+- [S1.4a] Adm. Samuel J. Paparo, "We can't want Taiwan's defense more than they want it itself" (verbatim direct quote), as reported in Taipei Times, 2026-04-22, "Paparo, on Senate testimony, says Taiwan is committed to its own defense", `taipeitimes.com/News/taiwan/archives/2026/04/22/2003856054`. Provenance: Taipei Times direct-quote attribution; House Armed Services PDF mirror retry deferred to 2026-05-07 06:00.
+- [S1.4b] Taipei Times, ibid., for the "orders of magnitude" Taiwan-vs-Ukraine willingness-to-fight polling comparison.
+- [S1.4c] Taipei Times, ibid., for the verbatim three-meta-trends quotations. (Original SASC source: Adm. Paparo, "Statement before the Senate Armed Services Committee on USINDOPACOM Posture", 2026-04-22; PDF retrieval deferred next fire.)
 
 ---
 
