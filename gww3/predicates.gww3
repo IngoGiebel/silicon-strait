@@ -136,13 +136,15 @@ MATCH (r:ROC_Leg_Ratification):
     IF r.target == "us_arms_procurement" and r.dpp_proposal != null:
         LET p5_state = game_state.kmt_caucus_position
         LET p4_state = game_state.kmt_doctrinal_alignment_active
-        r.signal_to_us_exec = struct(
-            ratified_amount: r.headline_amount,
-            unconditional_fraction: r.unconditional_amount / r.headline_amount,
-            us_loa_gated_fraction: r.loa_conditional_amount / r.headline_amount,
-            kmt_caucus_dominant: p5_state,
-            kmt_doctrinal_92consensus: p4_state
-        )
+        # q8(A) hoist: struct(key: value) kwargs not in gsl_ops.lark v1.2
+        # (Finding 4, parse-verify-2026-05-16). Compound-state grouping
+        # under r.signal_to_us_exec replaced with five flat properties.
+        # Grammar-extension (Finding 4(c)) tracked separately as q9.
+        r.signal_ratified_amount = r.headline_amount
+        r.signal_unconditional_fraction = r.unconditional_amount / r.headline_amount
+        r.signal_us_loa_gated_fraction = r.loa_conditional_amount / r.headline_amount
+        r.signal_kmt_caucus_dominant = p5_state
+        r.signal_kmt_doctrinal_92consensus = p4_state
         SUBMIT_INTENT "update_us_exec_fms_cadence_input" ON game_state
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -182,10 +184,12 @@ MATCH (a:TPOF_Approval_Wave {subject: "Lai"}):
 # under-determined; the parameter MUST decompose into capability and # willingness terms.
 MATCH (p:TPOF_Poll {wave: "2025-10"}):
     IF p.us_capable_pct == 0.453 and p.us_unwilling_pct == 0.448:
-        game_state.roc_public_us_reliability = struct(
-            capability: 0.453,
-            willingness: 0.552
-        )
+        # q8(A) hoist: struct(key: value) kwargs not in gsl_ops.lark v1.2
+        # (Finding 4, parse-verify-2026-05-16). Compound-state grouping
+        # under game_state.roc_public_us_reliability replaced with two
+        # flat properties. Grammar-extension tracked as q9.
+        game_state.roc_public_us_reliability_capability = 0.453
+        game_state.roc_public_us_reliability_willingness = 0.552
         game_state.us_taiwan_coupling_decomposed = true
 
 # ── P9-bis. roc_public_threat_anchor [PROVISIONAL] ────────────────────────
@@ -218,8 +222,7 @@ MATCH (s:ROC_Defense_Spend {fy: "2026"}):
     LET supplemental_NTD_B = 110.0
     LET special_unconditional_NTD_B = 300.0
     LET special_loa_gated_NTD_B = 480.0
-    LET total_NTD_B = baseline_NTD_B + supplemental_NTD_B +
-                      special_unconditional_NTD_B + special_loa_gated_NTD_B
+    LET total_NTD_B = baseline_NTD_B + supplemental_NTD_B + special_unconditional_NTD_B + special_loa_gated_NTD_B
     s.total_authorized_NTD_B = total_NTD_B
     s.us_loa_gated_fraction = special_loa_gated_NTD_B / total_NTD_B
     s.structure_class = "three_layer_with_sub_gate"
@@ -247,7 +250,7 @@ MATCH (t:ROC_Special_Budget_Tranche {budget_id: "NT$780B"}):
         t.release_rate = 1.0
         t.gate = "unconditional"
     ELIF t.tranche_number == 2:
-        IF game_state.us_exec.fms_loa_round_2_issued == true:
+        IF game_state.us_exec_fms_loa_round_2_issued == true:
             t.release_rate = 1.0
         ELSE:
             t.release_rate = 0.0
@@ -290,8 +293,16 @@ MATCH (b:ROC_Energy_Buffer):
             b.days = 14
     ELIF b.commodity == "coal":
         b.days = 45.7
-    LET binding_window = MIN(b.days FOR b IN game_state.roc_energy_buffers)
-    game_state.coercion_window_lower_bound_days = binding_window
+    # q8(A) hoist: MIN(b.days FOR b IN game_state.roc_energy_buffers)
+    # aggregator-over-comprehension not in gsl_ops.lark v1.2 (Finding 5,
+    # parse-verify-2026-05-16). NG is always the binding minimum across
+    # {petroleum 148, NG 10.7|14, coal 45.7}; hard-coded with the
+    # 2027-01-01 NG-policy step. Adding a new commodity buffer requires
+    # updating this binding. Grammar-extension tracked as q9.
+    IF NOW() < duration("2027-01-01T00:00:00Z"):
+        game_state.coercion_window_lower_bound_days = 10.7
+    ELSE:
+        game_state.coercion_window_lower_bound_days = 14
 
 # ── P14. roc_cable_resilience_response_time(t) :: monotonically-improving ─
 # Stochastic with deterministic shell. 2023-Feb baseline ≈ weeks
@@ -307,8 +318,7 @@ MATCH (c:ROC_Cable_Response):
         c.response_time_hours = 720
     ELIF c.year == 2026:
         c.response_time_hours = 6
-    IF c.architecture_includes_dedicated_sat AND
-       NOW() >= duration("2026-12-01T00:00:00Z"):
+    IF c.architecture_includes_dedicated_sat and NOW() >= duration("2026-12-01T00:00:00Z"):
         c.response_time_hours = MIN(c.response_time_hours, 4)
     game_state.cable_coercion_lever_state = "materially_loosened_since_2023"
 
@@ -320,7 +330,7 @@ MATCH (c:ROC_Cable_Response):
 # section implications: (a) KMT cross-strait-friendly energy-framing
 # pre-empted; (b) measurable observable in restart-procedure progress.
 MATCH (d:Lai_Speech_Act_Layer):
-    IF d.layer_index == 4 AND d.substrate == "energy_security":
+    IF d.layer_index == 4 and d.substrate == "energy_security":
         IF d.active_since >= "2026-03-01":
             game_state.roc_doctrinal_layer_count = 4
             game_state.deterrence_doctrine_substrates = [
@@ -347,7 +357,7 @@ EVERY "P1D":
     LET p7 = game_state.identity_is_decision_variable == false
     LET p11 = game_state.roc_doctrinal_state == "institutionalized_asymmetric"
     LET p15 = game_state.roc_doctrinal_layer_count == 4
-    IF p1 AND p2 AND p3 AND p4 AND p7 AND p11 AND p15:
+    IF p1 and p2 and p3 and p4 and p7 and p11 and p15:
         game_state.roc_composite = "doctrinally_locked_legislatively_gated_resilience_layered"
         ALERT "Day-8 ROC composite state stable" ON game_state
 
