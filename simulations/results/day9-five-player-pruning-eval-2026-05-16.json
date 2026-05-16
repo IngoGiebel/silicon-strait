@@ -1,0 +1,287 @@
+{
+  "metadata": {
+    "run_label": "Day-9 first-cut deterministic 8-pruning evaluation on 5-player frame",
+    "commit_at_run": "3da7314cfceea419c4140e00f0dea9eedc251caf",
+    "predicates_file": "gww3/predicates.gww3",
+    "predicates_file_sha256": "d42a176014b4721827b89eae965aff631cf3f7a879dc86ed15366336424b9b1a",
+    "parser_version": "gsl_ops.lark v1.2",
+    "audit_basis": {
+      "file": "research/audit/numerical-audit-2026-05-14-nisaba.md",
+      "audited_commit": "ea531e5"
+    },
+    "scope": "deterministic pruning only; stochastic extensions, Nash equilibrium, belief asymmetry, and repeated-game dynamics are out of scope",
+    "player_frame": [
+      "US_Exec",
+      "US_Leg",
+      "PRC",
+      "ROC_Exec",
+      "ROC_Leg"
+    ]
+  },
+  "state": {
+    "us_exec": {
+      "name": "US_Exec",
+      "transactional_rhetoric_active": true,
+      "can_unilaterally_repeal_statutory_substrate": false,
+      "taiwan_nuclear_umbrella_doctrinally_explicit": false,
+      "fms_loa_round_2_issued": false,
+      "action_nodes": [
+        "extend_security_umbrella",
+        "fms_loa_cadence"
+      ]
+    },
+    "us_leg": {
+      "name": "US_Leg",
+      "taiwan_caucus_member_count_range_119th": [
+        114,
+        139
+      ],
+      "statutory_substrate_repeal_path": "supermajority",
+      "chips_clawback_years": 10,
+      "tera_fmf_authorization_usd_b": 10.0,
+      "ndaa_taiwan_cycles": 4
+    },
+    "prc": {
+      "name": "PRC",
+      "taipei_track_lever": "transactional_executive",
+      "washington_track_lever": "core_interest",
+      "pitched_energy_reunification_inducement": true,
+      "attempts_statutory_substrate_negotiation": false,
+      "warhead_trajectory": [
+        600,
+        1000,
+        1500
+      ]
+    },
+    "roc_exec": {
+      "name": "ROC_Exec",
+      "sovereignty_position": "non_subordinate_to_PRC",
+      "threat_perception_state": "escalating",
+      "doctrinal_layer_count": 4,
+      "nuclear_restart_pivot_active_since": "2026-03",
+      "kmt_cross_strait_energy_framing_preempted": true,
+      "can_unilaterally_release_tranche2": false
+    },
+    "roc_leg": {
+      "name": "ROC_Leg",
+      "dpp_seat_share_below_half": true,
+      "kmt_chair": "Cheng_Li_wun",
+      "kmt_joint_declarations_date": "2026-02-03",
+      "kmt_doctrinal_alignment_active": true,
+      "kmt_repudiation_path": "new_chair_election_or_joint_decl_withdrawal",
+      "defense_special_total_ntd_b": 780.0,
+      "tranche1_unconditional_ntd_b": 300.0,
+      "tranche2_loa_gated_ntd_b": 480.0
+    },
+    "identity_band": [
+      0.62,
+      0.78
+    ],
+    "lai_approval_sigma_pp": 7.4,
+    "us_capability_pct": 0.453,
+    "us_willingness_pct": 0.552,
+    "prc_blame_pct": 0.448,
+    "fy2026_baseline_ntd_b": 949.5,
+    "resilience_supplemental_ntd_b": 110.0,
+    "special_unconditional_ntd_b": 300.0,
+    "special_loa_gated_ntd_b": 480.0,
+    "petroleum_buffer_days": 148.0,
+    "natural_gas_buffer_days_current": 10.7,
+    "natural_gas_buffer_days_2027": 14.0,
+    "coal_buffer_days": 45.7,
+    "matsu_cut_km_off_dongyin": 2.64
+  },
+  "prunings": [
+    {
+      "branch_id": "D7.1",
+      "branch_description": "US_Exec unilateral repeal of CHIPS §103/§107 10-year clawback",
+      "predicates_invoked": [
+        "Day-7 substrate-protection gate"
+      ],
+      "parameters_used": {
+        "predicate": "Day-7 S8 substrate-protection gate",
+        "sources": [
+          "publications/2026-05-07-en.md S8",
+          "source-#19 CHIPS Act §103/§107"
+        ],
+        "chips_clawback_years": 10,
+        "repeal_path": "supermajority",
+        "us_exec_unilateral_repeal_power": false,
+        "verdict": "blocked: 10-year statutory clawback requires substrate-level repeal, not executive discretion"
+      },
+      "survives": false,
+      "justification_text": "D7.1 pruned: blocked: 10-year statutory clawback requires substrate-level repeal, not executive discretion"
+    },
+    {
+      "branch_id": "D7.2",
+      "branch_description": "US_Exec unilateral repeal of TERA $10B FMF authorization",
+      "predicates_invoked": [
+        "Day-7 substrate-protection gate"
+      ],
+      "parameters_used": {
+        "predicate": "Day-7 S8 substrate-protection gate",
+        "sources": [
+          "publications/2026-05-07-en.md S8",
+          "source-#6 Taiwan Enhanced Resilience Act"
+        ],
+        "tera_fmf_authorization_usd_b": 10.0,
+        "repeal_path": "supermajority",
+        "us_exec_unilateral_repeal_power": false,
+        "verdict": "blocked: TERA FMF authorization is legislative substrate, not a day-of-crisis executive switch"
+      },
+      "survives": false,
+      "justification_text": "D7.2 pruned: blocked: TERA FMF authorization is legislative substrate, not a day-of-crisis executive switch"
+    },
+    {
+      "branch_id": "D7.3",
+      "branch_description": "US_Exec unilateral repeal of NDAA Taiwan provisions across four cycles",
+      "predicates_invoked": [
+        "Day-7 substrate-protection gate"
+      ],
+      "parameters_used": {
+        "predicate": "Day-7 S8 substrate-protection gate",
+        "sources": [
+          "publications/2026-05-07-en.md S8",
+          "sources-#6/#7/#8 FY2023-FY2025 NDAA density"
+        ],
+        "ndaa_taiwan_cycles": 4,
+        "repeal_path": "supermajority",
+        "us_exec_unilateral_repeal_power": false,
+        "verdict": "blocked: four-cycle NDAA substrate cannot be erased as one executive action"
+      },
+      "survives": false,
+      "justification_text": "D7.3 pruned: blocked: four-cycle NDAA substrate cannot be erased as one executive action"
+    },
+    {
+      "branch_id": "D7.4",
+      "branch_description": "US_Exec doctrinal addition of Taiwan nuclear umbrella under Trump-2",
+      "predicates_invoked": [
+        "Day-7 nuclear non-commitment predicate"
+      ],
+      "parameters_used": {
+        "predicates": [
+          "Day-7 S8 nuclear non-commitment",
+          "NPR-2022 negative-space predicate"
+        ],
+        "sources": [
+          "publications/2026-05-07-en.md S6/S8",
+          "source-#23 NPR-2022"
+        ],
+        "taiwan_nuclear_umbrella_doctrinally_explicit": false,
+        "second_order_alliance_coverage": "geographic residual via Japan/ROK, not doctrinal Taiwan umbrella",
+        "verdict": "blocked: no explicit Taiwan nuclear-umbrella commitment exists to add by deterministic executive fiat"
+      },
+      "survives": false,
+      "justification_text": "D7.4 pruned: blocked: no explicit Taiwan nuclear-umbrella commitment exists to add by deterministic executive fiat"
+    },
+    {
+      "branch_id": "D7.5",
+      "branch_description": "PRC redirect of Xi-Trump summit toward statutory-substrate negotiation",
+      "predicates_invoked": [
+        "Day-7 PRC counter-framing pattern"
+      ],
+      "parameters_used": {
+        "predicate": "Day-7 S8 PRC counter-framing pressure pattern",
+        "sources": [
+          "publications/2026-05-07-en.md S7/S8",
+          "sources-#29/#30 PRC TAO/MOFA briefings"
+        ],
+        "taipei_track_lever": "transactional_executive",
+        "washington_track_lever": "core_interest",
+        "attempts_statutory_substrate_negotiation": false,
+        "verdict": "blocked: PRC messaging targets recognition/electorate pressure, not substrate-touching statutory bargaining"
+      },
+      "survives": false,
+      "justification_text": "D7.5 pruned: blocked: PRC messaging targets recognition/electorate pressure, not substrate-touching statutory bargaining"
+    },
+    {
+      "branch_id": "D8.1",
+      "branch_description": "PRC cross-strait energy-framing redirect via peaceful-reunification inducement",
+      "predicates_invoked": [
+        "P15"
+      ],
+      "parameters_used": {
+        "predicates": [
+          "P15 roc_executive_energy_doctrine_layer_active"
+        ],
+        "sources": [
+          "publications/2026-05-12-en.md S5/S6",
+          "source-#23 Lai nuclear pivot + MOEA rejection"
+        ],
+        "roc_doctrinal_layer_count": 4,
+        "nuclear_restart_pivot_active_since": "2026-03",
+        "energy_framing_preempted": true,
+        "verdict": "blocked: Lai's energy-security substrate closes the PRC/KMT-friendly issue-space"
+      },
+      "survives": false,
+      "justification_text": "D8.1 pruned: blocked: Lai's energy-security substrate closes the PRC/KMT-friendly issue-space"
+    },
+    {
+      "branch_id": "D8.2",
+      "branch_description": "ROC_Exec unilateral release of NT$480B Tranche 2 ahead of US-FMS-LOA-Round-2",
+      "predicates_invoked": [
+        "P10",
+        "P12",
+        "P12-bis"
+      ],
+      "parameters_used": {
+        "predicates": [
+          "P10 roc_defense_spend_structure",
+          "P12 roc_special_budget_release_rate",
+          "P12-bis us_exec_fms_loa_cadence"
+        ],
+        "sources": [
+          "publications/2026-05-12-en.md S4/S6",
+          "sources-#15/#19",
+          "Day-8 numerical audit §1/§4"
+        ],
+        "special_total_ntd_b": 780.0,
+        "tranche1_unconditional_ntd_b": 300.0,
+        "tranche2_loa_gated_ntd_b": 480.0,
+        "us_fms_loa_round_2_issued": false,
+        "verdict": "blocked at current snapshot: NT$480B Tranche 2 is gated by US-FMS-LOA-Round-2, not ROC_Exec discretion"
+      },
+      "survives": false,
+      "justification_text": "D8.2 pruned: blocked at current snapshot: NT$480B Tranche 2 is gated by US-FMS-LOA-Round-2, not ROC_Exec discretion"
+    },
+    {
+      "branch_id": "D8.3",
+      "branch_description": "KMT-internal repudiation of 92-consensus alignment under current chair",
+      "predicates_invoked": [
+        "P4"
+      ],
+      "parameters_used": {
+        "predicates": [
+          "P4 kmt_doctrinal_alignment_with_ccp_92_consensus"
+        ],
+        "sources": [
+          "publications/2026-05-12-en.md S2/S6",
+          "sources-#6/#7/#8"
+        ],
+        "kmt_chair": "Cheng_Li_wun",
+        "joint_declarations_date": "2026-02-03",
+        "repudiation_path": "new_chair_election_or_joint_decl_withdrawal",
+        "doctrinal_alignment_active": true,
+        "verdict": "blocked under current chair: repudiation requires new chair election or formal Joint-Declarations withdrawal"
+      },
+      "survives": false,
+      "justification_text": "D8.3 pruned: blocked under current chair: repudiation requires new chair election or formal Joint-Declarations withdrawal"
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "survives": 0,
+    "pruned": 8,
+    "surviving_branch_ids": [],
+    "pruned_branch_ids": [
+      "D7.1",
+      "D7.2",
+      "D7.3",
+      "D7.4",
+      "D7.5",
+      "D8.1",
+      "D8.2",
+      "D8.3"
+    ]
+  }
+}

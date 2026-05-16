@@ -4,6 +4,8 @@ Python game-theoretic models of cross-strait dynamics. Nisaba 🌾's territory.
 
 ## Roadmap
 
+- **Day-9:** First cut delivered — deterministic 8-pruning evaluation on the promoted 5-player frame; see `game_theory_2026-05-16.py` and `results/day9-five-player-pruning-eval-2026-05-16.json`. This is **not** the Day-14 Nash equilibrium milestone.
+
 - **Day ~14:** First formal game tree. Players: PRC, ROC, USA, JPN, ASEAN, EU. Action sets calibrated from the qualitative analysis days 1–13. Static (one-shot) Nash equilibrium analysis.
 
 - **Day ~30:** Iterated game with Belief-Subgraph. Each player acts on a *belief* about the others' types and likely moves, not on ground truth. Belief asymmetries seeded from real-world signals (PRC white papers, U.S. National Defense Strategy, Taiwanese MND assessments).
