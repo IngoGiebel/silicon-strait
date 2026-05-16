@@ -1,76 +1,84 @@
-// ═══════════════════════════════════════════════════════════════════════════
-// Silicon Strait — GWW3 Symbolic Logic predicate set
-// ═══════════════════════════════════════════════════════════════════════════
-//
-// Day-7 (2026-05-07) S8 established the four-player frame
-// (US_Exec, US_Leg, PRC, ROC) and the deterministic skeleton:
-// substrate-protection gate, Davidson-window time-gate, Caucus-density
-// derivative, S6 nuclear non-commitment, PRC counter-framing pattern,
-// equilibrium-tilt aggregator. Stochastic extensions deferred under
-// q1_gww3_documentation (still open since 2026-04-30).
-//
-// Day-8 (2026-05-12) S6 — this file — promotes the frame in three ways
-// and authors fourteen ROC-player predicates plus one cross-player
-// promotion of the US_Exec node:
-//
-//   1. Player promotion: ROC → composite (ROC_Exec, ROC_Leg) with a
-//      deterministic gating relation. Frame is now five players.
-//   2. Action-node promotion: US_Exec moves from single-action
-//      (extend_security_umbrella) to multi-action — adding
-//      us_exec_fms_loa_cadence(t) as a continuous-control parameter.
-//      Required by S4's ratified-but-pending special-budget Tranche-2
-//      (NT$480B contingent on US-FMS-LOA-Round-2).
-//   3. Substrate extension: the deterrence-doctrine substrate set
-//      grows from three layers (political-constitutional, rhetorical,
-//      defense-architectural) to four (adds energy-security via Lai's
-//      2026-03 nuclear-restart pivot).
-//
-// Grammar reference: hassaleh/src/hassaleh/engine/gsl_ops.lark v1.2
-// (deterministic subset of GSL). Stochastic extensions are NOT valid
-// GSL and are kept in a dedicated pseudocode block at the bottom of
-// this file, marked explicitly. They will become valid once the GWW3
-// stochastic runtime grammar lands.
-//
-// Citations: every load-bearing predicate references the publication
-// source(s) by [#N] from publications/2026-05-12-en.md.
+# ═══════════════════════════════════════════════════════════════════════════
+# Silicon Strait — GWW3 Symbolic Logic predicate set
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# Day-7 (2026-05-07) S8 established the four-player frame
+# (US_Exec, US_Leg, PRC, ROC) and the deterministic skeleton:
+# substrate-protection gate, Davidson-window time-gate, Caucus-density
+# derivative, S6 nuclear non-commitment, PRC counter-framing pattern,
+# equilibrium-tilt aggregator. Stochastic extensions deferred under
+# q1_gww3_documentation (still open since 2026-04-30).
+#
+# Day-8 (2026-05-12) S6 — this file — promotes the frame in three ways
+# and authors fourteen ROC-player predicates plus one cross-player
+# promotion of the US_Exec node:
+#
+#   1. Player promotion: ROC → composite (ROC_Exec, ROC_Leg) with a
+#      deterministic gating relation. Frame is now five players.
+#   2. Action-node promotion: US_Exec moves from single-action
+#      (extend_security_umbrella) to multi-action — adding
+#      us_exec_fms_loa_cadence(t) as a continuous-control parameter.
+#      Required by S4's ratified-but-pending special-budget Tranche-2
+#      (NT$480B contingent on US-FMS-LOA-Round-2).
+#   3. Substrate extension: the deterrence-doctrine substrate set
+#      grows from three layers (political-constitutional, rhetorical,
+#      defense-architectural) to four (adds energy-security via Lai's
+#      2026-03 nuclear-restart pivot).
+#
+# Grammar reference: hassaleh/src/hassaleh/engine/gsl_ops.lark v1.2
+# (deterministic subset of GSL). Stochastic extensions are not valid
+# GSL and are kept in a dedicated pseudocode block at the bottom of
+# this file, marked explicitly. They will become valid once the GWW3
+# stochastic runtime grammar lands.
+#
+# Citations: every load-bearing predicate references the publication
+# source(s) by [#N] from publications/2026-05-12-en.md.
+#
+# Parse-status (Day-9 06:00 fire, 2026-05-16):
+#   - Syntactic-conversion pass applied: // comments → #, AND/OR/NOT
+#     → lowercase, multi-line IF-AND continuations collapsed.
+#   - 12 of 15 predicates + P12-bis parse cleanly under gsl_ops.lark v1.2.
+#   - P6, P9, P13 hit grammar gaps (struct kwargs; aggregator-over-
+#     comprehension). Refactor pending — see research/audit/parse-verify-
+#     2026-05-16.md for the analysis and the two structural options.
 
-// ═══════════════════════════════════════════════════════════════════════════
-// Player frame (5 players, promoted from Day-7 S8)
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# Player frame (5 players, promoted from Day-7 S8)
+# ═══════════════════════════════════════════════════════════════════════════
 
-// PLAYER DECLARATION — documentary, expressed via game_state nodes:
-//   US_Exec, US_Leg, PRC, ROC_Exec, ROC_Leg
-//
-// Day-7 S8's ROC node is replaced by ROC_Exec ⊕ ROC_Leg with a
-// deterministic gating relation. The gate's input is a stochastic
-// factional-balance term inside ROC_Leg (see kmt_caucus_position
-// predicate below). Choosing a flat 5-player frame over a recursive
-// ROC sub-game keeps the equilibrium computation tractable while
-// preserving the political-economy reality (the factional bargaining
-// noise sits inside one player's state, not in a sub-game tree).
+# PLAYER DECLARATION — documentary, expressed via game_state nodes:
+#   US_Exec, US_Leg, PRC, ROC_Exec, ROC_Leg
+#
+# Day-7 S8's ROC node is replaced by ROC_Exec ⊕ ROC_Leg with a
+# deterministic gating relation. The gate's input is a stochastic
+# factional-balance term inside ROC_Leg (see kmt_caucus_position
+# predicate below). Choosing a flat 5-player frame over a recursive
+# ROC sub-game keeps the equilibrium computation tractable while
+# preserving the political-economy reality (the factional bargaining
+# noise sits inside one player's state, not in a sub-game tree).
 
-// ═══════════════════════════════════════════════════════════════════════════
-// S1 — ROC_Exec doctrinal predicates [#1, #2, #3, #4, #23]
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# S1 — ROC_Exec doctrinal predicates [#1, #2, #3, #4, #23]
+# ═══════════════════════════════════════════════════════════════════════════
 
-// ── P1. roc_executive_not_subordinate_assertion ────────────────────────────
-// Deterministic. Active since 2024-05-20. Source [#1] (inaugural).
-// Reaffirmed implicitly in every subsequent Lai speech-act; explicitly
-// extended to "alarming military ambitions" by 2026 NY [#2] and to
-// 3%/5% GDP defense pledges by 2025 National Day [#4].
-// Encodes the appeasement-equilibrium foreclosure proof embedded in
-// the inaugural's "even if we accept ... ambition will not disappear".
+# ── P1. roc_executive_not_subordinate_assertion ────────────────────────────
+# Deterministic. Active since 2024-05-20. Source [#1] (inaugural).
+# Reaffirmed implicitly in every subsequent Lai speech-act; explicitly
+# extended to "alarming military ambitions" by 2026 NY [#2] and to
+# 3%/5% GDP defense pledges by 2025 National Day [#4].
+# Encodes the appeasement-equilibrium foreclosure proof embedded in
+# the inaugural's "even if we accept ... ambition will not disappear".
 MATCH (e:Executive_Speech_Act {actor: "ROC_Exec"}):
-    IF e.date >= "2024-05-20" AND e.contains_assertion == "not_subordinate":
+    IF e.date >= "2024-05-20" and e.contains_assertion == "not_subordinate":
         game_state.roc_sovereignty_position = "non_subordinate_to_PRC"
         game_state.appeasement_equilibrium_foreclosed = true
         LOG "P1 active: roc_executive_not_subordinate_assertion" LEVEL "info"
 
-// ── P2. roc_legislative_constraint_on_executive_pkg ────────────────────────
-// Deterministic gate. Active since DPP became LY minority post-2024.
-// Source [#2] (NY plea) + [#3] (EPPD plea) — both speech-acts plead
-// for ratification, doubling the gate across defense AND tariff packages.
-// Stays in effect until a re-election rebalances LY composition.
+# ── P2. roc_legislative_constraint_on_executive_pkg ────────────────────────
+# Deterministic gate. Active since DPP became LY minority post-2024.
+# Source [#2] (NY plea) + [#3] (EPPD plea) — both speech-acts plead
+# for ratification, doubling the gate across defense and tariff packages.
+# Stays in effect until a re-election rebalances LY composition.
 MATCH (p:Executive_Package {actor: "ROC_Exec"}):
     IF p.type in ["defense_special_budget", "us_tariff_agreement"]:
         IF game_state.dpp_seat_share < 0.5:
@@ -78,57 +86,54 @@ MATCH (p:Executive_Package {actor: "ROC_Exec"}):
             p.ratification_class = "joint_output_of_three_gates"
             LOG "P2 gate engaged on executive package" LEVEL "info"
 
-// ── P3. roc_threat_perception_state(prc_military) ──────────────────────────
-// Stochastic from 2026-01-01 — encoded as deterministic shell here.
-// The 2026 NY shift from "renounce force" (request) to "alarming
-// ambitions" (threat-coding) is the regime change. Source [#2].
-// Regression possible under (i) 2028 ROC executive transition or
-// (ii) major PRC de-escalation event. See STOCHASTIC block.
+# ── P3. roc_threat_perception_state(prc_military) ──────────────────────────
+# Stochastic from 2026-01-01 — encoded as deterministic shell here.
+# The 2026 NY shift from "renounce force" (request) to "alarming
+# ambitions" (threat-coding) is the regime change. Source [#2].
+# Regression possible under (i) 2028 ROC executive transition or # (ii) major PRC de-escalation event. See STOCHASTIC block.
 MATCH (s:ROC_Exec_Threat_Coding):
     IF s.date >= "2026-01-01":
         IF s.rhetoric_register == "alarming_military_ambitions":
             game_state.roc_threat_perception_state = "escalating"
             LOG "P3 shell deterministic; regression term is stochastic" LEVEL "info"
 
-// ═══════════════════════════════════════════════════════════════════════════
-// S2 — KMT opposition / ROC_Leg predicates [#6, #7, #8, #9]
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# S2 — KMT opposition / ROC_Leg predicates [#6, #7, #8, #9]
+# ═══════════════════════════════════════════════════════════════════════════
 
-// ── P4. kmt_doctrinal_alignment_with_ccp_92_consensus ──────────────────────
-// Deterministic. Operative since 2026-02-03 Beijing forum under Chair
-// Cheng Li-wun, institutionalized via Joint Declarations [#6, #7].
-// Repudiation path: new chair election OR formal Joint-Declarations
-// withdrawal. MAC counter-framing [#8] is logged but does not move P4.
+# ── P4. kmt_doctrinal_alignment_with_ccp_92_consensus ──────────────────────
+# Deterministic. Operative since 2026-02-03 Beijing forum under Chair
+# Cheng Li-wun, institutionalized via Joint Declarations [#6, #7].
+# Repudiation path: new chair election or formal Joint-Declarations
+# withdrawal. MAC counter-framing [#8] is logged but does not move P4.
 MATCH (k:Party {name: "KMT"}):
-    IF k.chair == "Cheng_Li_wun" AND
-       k.joint_declarations_with_ccp != null AND
-       k.joint_declarations_date >= "2026-02-03":
+    IF k.chair == "Cheng_Li_wun" and k.joint_declarations_with_ccp != null and k.joint_declarations_date >= "2026-02-03":
         k.doctrinal_alignment_with_ccp = "1992_consensus"
         k.repudiation_path = "new_chair_election_or_joint_decl_withdrawal"
         game_state.kmt_doctrinal_alignment_active = true
 
-// ── P5. kmt_caucus_position_on_special_defense_budget ──────────────────────
-// Stochastic over factional balance — deterministic shell of the
-// post-2026-05-08 ratified state. Pre-ratification factional axes:
-// NT$380B+N official caucus (Cheng / Fu / Chi); NT$800B Han / Hsu;
-// Huang-Fuhsing expulsion pressure. Source [#9, #14, #15].
-// Stochastic events that move this: cross-party negotiation outcomes;
-// caucus-discipline actions; chair-level transitions.
+# ── P5. kmt_caucus_position_on_special_defense_budget ──────────────────────
+# Stochastic over factional balance — deterministic shell of the
+# post-2026-05-08 ratified state. Pre-ratification factional axes:
+# NT$380B+N official caucus (Cheng / Fu / Chi); NT$800B Han / Hsu;
+# Huang-Fuhsing expulsion pressure. Source [#9, #14, #15].
+# Stochastic events that move this: cross-party negotiation outcomes;
+# caucus-discipline actions; chair-level transitions.
 MATCH (c:Caucus {party: "KMT"}):
     IF c.snapshot_date >= "2026-05-08":
-        // Ratified compromise locked the post-passage factional weight.
+        # Ratified compromise locked the post-passage factional weight.
         c.dominant_position = "NT$780B_three_hundred_unconditional_four_eighty_loa_gated"
         c.pre_passage_factions = ["NT$380B+N", "NT$800B_Han_Hsu", "Huang_Fuhsing"]
         LOG "P5 stochastic; current shell anchored on 2026-05-08 ratification" LEVEL "info"
 
-// ── P6. roc_leg_ratification_signal_to_us ──────────────────────────────────
-// Gated coupling. Couples P5 (KMT caucus factional balance) to the
-// DPP executive package proposal under P2. The output is the signal
-// observed by US_Exec when deciding FMS-LOA cadence (P12-bis below).
-// Source: [#3] EPPD legislative-ratification plea + [#9] cross-party
-// negotiation pattern + [#15] post-passage NT$780B/300+480 structure.
+# ── P6. roc_leg_ratification_signal_to_us ──────────────────────────────────
+# Gated coupling. Couples P5 (KMT caucus factional balance) to the
+# DPP executive package proposal under P2. The output is the signal
+# observed by US_Exec when deciding FMS-LOA cadence (P12-bis below).
+# Source: [#3] EPPD legislative-ratification plea + [#9] cross-party
+# negotiation pattern + [#15] post-passage NT$780B/300+480 structure.
 MATCH (r:ROC_Leg_Ratification):
-    IF r.target == "us_arms_procurement" AND r.dpp_proposal != null:
+    IF r.target == "us_arms_procurement" and r.dpp_proposal != null:
         LET p5_state = game_state.kmt_caucus_position
         LET p4_state = game_state.kmt_doctrinal_alignment_active
         r.signal_to_us_exec = struct(
@@ -140,77 +145,74 @@ MATCH (r:ROC_Leg_Ratification):
         )
         SUBMIT_INTENT "update_us_exec_fms_cadence_input" ON game_state
 
-// ═══════════════════════════════════════════════════════════════════════════
-// S3 — Public opinion / ROC public substrate predicates [#10, #11, #12]
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# S3 — Public opinion / ROC public substrate predicates [#10, #11, #12]
+# ═══════════════════════════════════════════════════════════════════════════
 
-// ── P7. roc_identity_drift_rate ≈ 0 within band(0.62, 0.78) ────────────────
-// Deterministic. NCCU 62% (gold standard) ≤ "Taiwanese only" ≤ TPOF 78%.
-// σ < 1 pp over 4 years (2022–2025). Source [#10, #11, #12].
-// Encodes: identity is NOT a decision-relevant stochastic variable on
-// any horizon the four-player game evaluates over. Identity → party
-// correlation is path-stable, not path-dependent.
+# ── P7. roc_identity_drift_rate ≈ 0 within band(0.62, 0.78) ────────────────
+# Deterministic. NCCU 62% (gold standard) ≤ "Taiwanese only" ≤ TPOF 78%.
+# σ < 1 pp over 4 years (2022–2025). Source [#10, #11, #12].
+# Encodes: identity is not a decision-relevant stochastic variable on
+# any horizon the four-player game evaluates over. Identity → party
+# correlation is path-stable, not path-dependent.
 MATCH (id:ROC_Identity_TimeSeries):
-    IF id.taiwanese_only_share_nccu >= 0.62 AND
-       id.taiwanese_only_share_tpof <= 0.78 AND
-       id.sigma_4yr < 0.01:
+    IF id.taiwanese_only_share_nccu >= 0.62 and id.taiwanese_only_share_tpof <= 0.78 and id.sigma_4yr < 0.01:
         game_state.roc_identity_mobility = "non_mobile_on_decision_horizons"
         game_state.identity_is_decision_variable = false
 
-// ── P8. roc_executive_approval_volatility ──────────────────────────────────
-// Stochastic σ ≈ 7.4 pp over 8 waves — deterministic shell of the
-// post-2025-10 → post-2025-12 +8.5pp recovery observation.
-// Source [#11]. Encodes: ROC_Exec operates in a high-noise approval
-// substrate that compresses the window of unconstrained executive
-// action; doctrinal moves CAN recover approval (cf. Oct→Dec 2025
-// post-National-Day bounce), but the noise floor is structural.
+# ── P8. roc_executive_approval_volatility ──────────────────────────────────
+# Stochastic σ ≈ 7.4 pp over 8 waves — deterministic shell of the
+# post-2025-10 → post-2025-12 +8.5pp recovery observation.
+# Source [#11]. Encodes: ROC_Exec operates in a high-noise approval
+# substrate that compresses the window of unconstrained executive
+# action; doctrinal moves CAN recover approval (cf. Oct→Dec 2025
+# post-National-Day bounce), but the noise floor is structural.
 MATCH (a:TPOF_Approval_Wave {subject: "Lai"}):
-    IF a.wave_count >= 8 AND a.sigma_8wave >= 0.05:
+    IF a.wave_count >= 8 and a.sigma_8wave >= 0.05:
         game_state.roc_exec_approval_substrate = "high_noise"
         game_state.unconstrained_exec_action_window = "compressed_by_noise_floor"
         LOG "P8 stochastic; sigma stable across 2024-2025 wave history" LEVEL "info"
 
-// ── P9. roc_public_us_reliability_perception ───────────────────────────────
-// Deterministic split. Source [#11] Oct-2025 TPOF wave:
-//   US capable_pct = 0.453   /  US willing_pct = 1 - 0.448 = 0.552
-// The split is the most diagnostic single number in the dataset for
-// the US-coalition-management dimension. Encodes: any GWW3 model that
-// treats US-Taiwan alignment as a single coupling parameter is
-// under-determined; the parameter MUST decompose into capability and
-// willingness terms.
+# ── P9. roc_public_us_reliability_perception ───────────────────────────────
+# Deterministic split. Source [#11] Oct-2025 TPOF wave:
+#   US capable_pct = 0.453   /  US willing_pct = 1 - 0.448 = 0.552
+# The split is the most diagnostic single number in the dataset for
+# the US-coalition-management dimension. Encodes: any GWW3 model that
+# treats US-Taiwan alignment as a single coupling parameter is
+# under-determined; the parameter MUST decompose into capability and # willingness terms.
 MATCH (p:TPOF_Poll {wave: "2025-10"}):
-    IF p.us_capable_pct == 0.453 AND p.us_unwilling_pct == 0.448:
+    IF p.us_capable_pct == 0.453 and p.us_unwilling_pct == 0.448:
         game_state.roc_public_us_reliability = struct(
             capability: 0.453,
             willingness: 0.552
         )
         game_state.us_taiwan_coupling_decomposed = true
 
-// ── P9-bis. roc_public_threat_anchor [PROVISIONAL] ────────────────────────
-// Provisional single-wave datapoint: 0.448 plurality attributes
-// cross-strait tension to PRC (Oct-2025 TPOF wave). Source [#11].
-// PROMOTION to deterministic-multi-wave is gated on recovery of the
-// TPOF 12-month war-likelihood image-embedded table (currently a
-// Day-8 residual research-gap — q on tomorrow list).
+# ── P9-bis. roc_public_threat_anchor [PROVISIONAL] ────────────────────────
+# Provisional single-wave datapoint: 0.448 plurality attributes
+# cross-strait tension to PRC (Oct-2025 TPOF wave). Source [#11].
+# PROMOTION to deterministic-multi-wave is gated on recovery of the
+# TPOF 12-month war-likelihood image-embedded table (currently a
+# Day-8 residual research-gap — q on tomorrow list).
 MATCH (p:TPOF_Poll {wave: "2025-10"}):
     IF p.prc_attribution_pct == 0.448:
         game_state.roc_public_threat_anchor_provisional = 0.448
         LOG "P9-bis PROVISIONAL — single wave; multi-wave promotion pending" LEVEL "warn"
 
-// ═══════════════════════════════════════════════════════════════════════════
-// S4 — Defense reform / ROC_Leg ratification predicates [#13, #14, #15,
-//                                                        #16, #17, #18,
-//                                                        #19, #20, #21]
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# S4 — Defense reform / ROC_Leg ratification predicates [#13, #14, #15,
+#                                                        #16, #17, #18,
+#                                                        #19, #20, #21]
+# ═══════════════════════════════════════════════════════════════════════════
 
-// ── P10. roc_defense_spend_structure :: three_layer ────────────────────────
-// Deterministic. Source [#17] (Ma Wen-chun decomposition) + [#19]
-// (post-passage promulgation). FY2026 total = baseline + supplemental
-// + special, with special-budget further decomposed into unconditional
-// + US-LOA-gated. Encodes: ROC defense allocation is NOT a single
-// executive-authored number; it is a three-channel flow with three
-// distinct authorization gates, and the special channel has an
-// internal sub-gate tied to a non-ROC actor (US_Exec).
+# ── P10. roc_defense_spend_structure :: three_layer ────────────────────────
+# Deterministic. Source [#17] (Ma Wen-chun decomposition) + [#19]
+# (post-passage promulgation). FY2026 total = baseline + supplemental
+# + special, with special-budget further decomposed into unconditional
+# + US-LOA-gated. Encodes: ROC defense allocation is not a single
+# executive-authored number; it is a three-channel flow with three
+# distinct authorization gates, and the special channel has an
+# internal sub-gate tied to a non-ROC actor (US_Exec).
 MATCH (s:ROC_Defense_Spend {fy: "2026"}):
     LET baseline_NTD_B = 949.5
     LET supplemental_NTD_B = 110.0
@@ -222,26 +224,24 @@ MATCH (s:ROC_Defense_Spend {fy: "2026"}):
     s.us_loa_gated_fraction = special_loa_gated_NTD_B / total_NTD_B
     s.structure_class = "three_layer_with_sub_gate"
 
-// ── P11. roc_doctrinal_posture :: institutionalized_asymmetric ─────────────
-// Deterministic. Source [#16] QDR 2025. Three institutional substrates:
-// Littoral Strike Group (force-structure); drone training center
-// (training pipeline); drone+MANPADS conscription curriculum
-// (conscript-pipeline). Encodes: the doctrinal substrate the ratified
-// spend funds is no longer a planning aspiration — it is a
-// force-structure-and-pipeline state. Reversal requires explicit
-// doctrinal counter-authorship, not just budget redirection.
+# ── P11. roc_doctrinal_posture :: institutionalized_asymmetric ─────────────
+# Deterministic. Source [#16] QDR 2025. Three institutional substrates:
+# Littoral Strike Group (force-structure); drone training center
+# (training pipeline); drone+MANPADS conscription curriculum
+# (conscript-pipeline). Encodes: the doctrinal substrate the ratified
+# spend funds is no longer a planning aspiration — it is a
+# force-structure-and-pipeline state. Reversal requires explicit
+# doctrinal counter-authorship, not just budget redirection.
 MATCH (q:QDR {year: 2025}):
-    IF q.littoral_strike_group == true AND
-       q.drone_training_center == true AND
-       q.conscription_drone_curriculum == true:
+    IF q.littoral_strike_group == true and q.drone_training_center == true and q.conscription_drone_curriculum == true:
         game_state.roc_doctrinal_state = "institutionalized_asymmetric"
         game_state.doctrinal_reversal_path = "explicit_counter_authorship_only"
 
-// ── P12. roc_special_budget_release_rate :: deterministic_gated ────────────
-// Deterministic gate. Source [#19] (promulgation) + [#15]
-// (tranche structure). Tranche 1 (NT$300B) release rate = 1.0
-// unconditionally. Tranche 2 (NT$480B) release rate is binary on
-// US-FMS-LOA-Round-2 issuance. Couples DIRECTLY to P12-bis below.
+# ── P12. roc_special_budget_release_rate :: deterministic_gated ────────────
+# Deterministic gate. Source [#19] (promulgation) + [#15]
+# (tranche structure). Tranche 1 (NT$300B) release rate = 1.0
+# unconditionally. Tranche 2 (NT$480B) release rate is binary on
+# US-FMS-LOA-Round-2 issuance. Couples DIRECTLY to P12-bis below.
 MATCH (t:ROC_Special_Budget_Tranche {budget_id: "NT$780B"}):
     IF t.tranche_number == 1:
         t.release_rate = 1.0
@@ -253,13 +253,13 @@ MATCH (t:ROC_Special_Budget_Tranche {budget_id: "NT$780B"}):
             t.release_rate = 0.0
         t.gate = "us_fms_loa_round_2"
 
-// ── P12-bis. us_exec_fms_loa_cadence(t) [CROSS-PLAYER PROMOTION] ───────────
-// Day-7 S8 modeled US_Exec as a single-action node
-// (extend_security_umbrella ∈ {yes, no}). Day-8 S4 evidence forces
-// promotion to a multi-action node with at least one continuous-control
-// parameter — the FMS-LOA issuance cadence. The same US_Exec node now
-// gates BOTH extended deterrence (kinetic) AND Taipei's ratified-but-
-// pending defense-spend (procurement). Source [#14, #15, #19, #20].
+# ── P12-bis. us_exec_fms_loa_cadence(t) [CROSS-PLAYER PROMOTION] ───────────
+# Day-7 S8 modeled US_Exec as a single-action node
+# (extend_security_umbrella ∈ {yes, no}). Day-8 S4 evidence forces
+# promotion to a multi-action node with at least one continuous-control
+# parameter — the FMS-LOA issuance cadence. The same US_Exec node now
+# gates BOTH extended deterrence (kinetic) and Taipei's ratified-but-
+# pending defense-spend (procurement). Source [#14, #15, #19, #20].
 MATCH (u:Player {name: "US_Exec"}):
     u.action_nodes = [
         "extend_security_umbrella",
@@ -270,16 +270,16 @@ MATCH (u:Player {name: "US_Exec"}):
     u.continuous_control_parameter = "fms_loa_cadence"
     SUBMIT_INTENT "evaluate_fms_cadence" ON u WITH {window: "rolling_4_quarters"}
 
-// ═══════════════════════════════════════════════════════════════════════════
-// S5 — Resilience substrate predicates [#22, #23, #24, #25, #26]
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# S5 — Resilience substrate predicates [#22, #23, #24, #25, #26]
+# ═══════════════════════════════════════════════════════════════════════════
 
-// ── P13. roc_energy_buffer_days(commodity) ─────────────────────────────────
-// Deterministic, time-indexed. Source [#25] NDC (actuals); [#24] MOEA
-// (NG policy trajectory). The MIN across commodities sets the lower
-// bound on the time-compression window any non-kinetic coercion
-// campaign must work within before energy-substrate degradation
-// becomes observable. NG is the binding constraint (10.7 → 14 by 2027).
+# ── P13. roc_energy_buffer_days(commodity) ─────────────────────────────────
+# Deterministic, time-indexed. Source [#25] NDC (actuals); [#24] MOEA
+# (NG policy trajectory). The MIN across commodities sets the lower
+# bound on the time-compression window any non-kinetic coercion
+# campaign must work within before energy-substrate degradation
+# becomes observable. NG is the binding constraint (10.7 → 14 by 2027).
 MATCH (b:ROC_Energy_Buffer):
     IF b.commodity == "petroleum":
         b.days = 148
@@ -293,15 +293,15 @@ MATCH (b:ROC_Energy_Buffer):
     LET binding_window = MIN(b.days FOR b IN game_state.roc_energy_buffers)
     game_state.coercion_window_lower_bound_days = binding_window
 
-// ── P14. roc_cable_resilience_response_time(t) :: monotonically-improving ─
-// Stochastic with deterministic shell. 2023-Feb baseline ≈ weeks
-// (720 hours order). 2026-04-30 actual response ≈ hours (Matsu-3
-// microwave backup activated within hours). Source [#22]. Architecture
-// hedge: Astranis dedicated-satellite track scheduled end-2026 [#26].
-// Encodes: the cable-cut coercion lever has been materially loosened;
-// the residual extreme-case hedge (full cable + microwave saturation)
-// is the satellite path. Monotonically-decreasing-mean property is
-// stochastic at the per-incident granularity; see STOCHASTIC block.
+# ── P14. roc_cable_resilience_response_time(t) :: monotonically-improving ─
+# Stochastic with deterministic shell. 2023-Feb baseline ≈ weeks
+# (720 hours order). 2026-04-30 actual response ≈ hours (Matsu-3
+# microwave backup activated within hours). Source [#22]. Architecture
+# hedge: Astranis dedicated-satellite track scheduled end-2026 [#26].
+# Encodes: the cable-cut coercion lever has been materially loosened;
+# the residual extreme-case hedge (full cable + microwave saturation)
+# is the satellite path. Monotonically-decreasing-mean property is
+# stochastic at the per-incident granularity; see STOCHASTIC block.
 MATCH (c:ROC_Cable_Response):
     IF c.year == 2023:
         c.response_time_hours = 720
@@ -312,13 +312,13 @@ MATCH (c:ROC_Cable_Response):
         c.response_time_hours = MIN(c.response_time_hours, 4)
     game_state.cable_coercion_lever_state = "materially_loosened_since_2023"
 
-// ── P15. roc_executive_energy_doctrine_layer_active ────────────────────────
-// Deterministic since 2026-03. Source [#23]. Lai nuclear-restart pivot
-// at Kuo-sheng and Maanshan extends the deterrence-doctrine substrate
-// set from three layers (political-constitutional, rhetorical baseline,
-// defense-architectural) to four (adds energy-security). Two cross-
-// section implications: (a) KMT cross-strait-friendly energy-framing
-// pre-empted; (b) measurable observable in restart-procedure progress.
+# ── P15. roc_executive_energy_doctrine_layer_active ────────────────────────
+# Deterministic since 2026-03. Source [#23]. Lai nuclear-restart pivot
+# at Kuo-sheng and Maanshan extends the deterrence-doctrine substrate
+# set from three layers (political-constitutional, rhetorical baseline,
+# defense-architectural) to four (adds energy-security). Two cross-
+# section implications: (a) KMT cross-strait-friendly energy-framing
+# pre-empted; (b) measurable observable in restart-procedure progress.
 MATCH (d:Lai_Speech_Act_Layer):
     IF d.layer_index == 4 AND d.substrate == "energy_security":
         IF d.active_since >= "2026-03-01":
@@ -332,13 +332,13 @@ MATCH (d:Lai_Speech_Act_Layer):
             game_state.kmt_cross_strait_energy_framing_preempted = true
             game_state.energy_substrate_observable = "kuo_sheng_and_maanshan_restart_progress"
 
-// ═══════════════════════════════════════════════════════════════════════════
-// Aggregator — Day-8 ROC-player composite state
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# Aggregator — Day-8 ROC-player composite state
+# ═══════════════════════════════════════════════════════════════════════════
 
-// Daily roll-up combining the 15 above predicates into the ROC-player
-// composite state node consumed by the equilibrium-tilt aggregator
-// from Day-7 S8.
+# Daily roll-up combining the 15 above predicates into the ROC-player
+# composite state node consumed by the equilibrium-tilt aggregator
+# from Day-7 S8.
 EVERY "P1D":
     LET p1 = game_state.roc_sovereignty_position == "non_subordinate_to_PRC"
     LET p2 = game_state.dpp_seat_share < 0.5
@@ -351,90 +351,90 @@ EVERY "P1D":
         game_state.roc_composite = "doctrinally_locked_legislatively_gated_resilience_layered"
         ALERT "Day-8 ROC composite state stable" ON game_state
 
-// ═══════════════════════════════════════════════════════════════════════════
-// Game-tree pruning under the Day-8 ROC predicates (deterministic)
-// ═══════════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════════
+# Game-tree pruning under the Day-8 ROC predicates (deterministic)
+# ═══════════════════════════════════════════════════════════════════════════
 
-// Three Day-8 prunings (additive to Day-7 S8's five):
-//
-//   (D8.1) PRC strategic-redirection of cross-strait energy framing
-//          via "peaceful-reunification" inducement: BLOCKED by P15's
-//          energy-substrate doctrinal layer + the 2026-03 MOEA
-//          rejection [#23]. The branch was a live PRC option in
-//          early 2026; the Lai pivot pre-empted it.
-//
-//   (D8.2) ROC-Exec unilateral release of NT$480B Tranche 2 in
-//          advance of US-FMS-LOA-Round-2: BLOCKED by P12's
-//          deterministic gate. Tranche 2 is structurally inaccessible
-//          to ROC-Exec discretion without a US_Exec action.
-//
-//   (D8.3) KMT-internal repudiation of 92-consensus alignment under
-//          current chair: BLOCKED by P4's repudiation path requirement
-//          (new chair election or formal Joint-Declarations withdrawal).
-//          The branch is reachable but requires a discrete party-level
-//          event, not a parliamentary maneuver.
-//
-// Branches that remain in the stochastic resolution set (added to
-// Day-7 S8's three): the ROC-Leg factional-balance evolution under
-// P5 (caucus-discipline events; chair transitions); the per-incident
-// cable response-time tail under P14; the recovery trajectory of
-// the TPOF war-likelihood time-series that promotes (or fails to
-// promote) P9-bis to deterministic-multi-wave.
+# Three Day-8 prunings (additive to Day-7 S8's five):
+#
+#   (D8.1) PRC strategic-redirection of cross-strait energy framing
+#          via "peaceful-reunification" inducement: BLOCKED by P15's
+#          energy-substrate doctrinal layer + the 2026-03 MOEA
+#          rejection [#23]. The branch was a live PRC option in
+#          early 2026; the Lai pivot pre-empted it.
+#
+#   (D8.2) ROC-Exec unilateral release of NT$480B Tranche 2 in
+#          advance of US-FMS-LOA-Round-2: BLOCKED by P12's
+#          deterministic gate. Tranche 2 is structurally inaccessible
+#          to ROC-Exec discretion without a US_Exec action.
+#
+#   (D8.3) KMT-internal repudiation of 92-consensus alignment under
+#          current chair: BLOCKED by P4's repudiation path requirement
+#          (new chair election or formal Joint-Declarations withdrawal).
+#          The branch is reachable but requires a discrete party-level
+#          event, not a parliamentary maneuver.
+#
+# Branches that remain in the stochastic resolution set (added to
+# Day-7 S8's three): the ROC-Leg factional-balance evolution under
+# P5 (caucus-discipline events; chair transitions); the per-incident
+# cable response-time tail under P14; the recovery trajectory of
+# the TPOF war-likelihood time-series that promotes (or fails to
+# promote) P9-bis to deterministic-multi-wave.
 
-// ═══════════════════════════════════════════════════════════════════════════
-// STOCHASTIC EXTENSIONS — pending q1_gww3_documentation closure
-// ═══════════════════════════════════════════════════════════════════════════
-//
-// The block below is documentary pseudocode, NOT valid GSL. It will
-// not parse against gsl_ops.lark. Same convention as Day-7 S8.
-//
-//   STOCHASTIC: ROC_Exec.threat_perception_state ~ Distribution(
-//       escalating:   0.85,   // current 2026 regime
-//       de_escalating: 0.10,  // requires major PRC concession event
-//       neutral:      0.05    // requires 2028 ROC executive transition
-//   ) | conditional(roc_executive_administration == "Lai")
-//
-//   STOCHASTIC: KMT.caucus_factional_balance ~ Distribution(
-//       cheng_fu_chi_dominant: f(chair_position, financial_discipline_framing),
-//       han_hsu_dominant:      g(speaker_role_active, defense_substrate_framing),
-//       huang_fuhsing_expulsion_event: h(internal_discipline_actions)
-//   ) | partial_information(public_opinion_pressure)
-//
-//   STOCHASTIC: ROC_Exec.approval_volatility ~ Distribution(
-//       sigma_8wave:   ~ N(7.4_pp, prior_2024_2025_history),
-//       drift_term:    bounded_by(doctrinal_speech_act_recovery)
-//   )
-//
-//   STOCHASTIC: ROC_Cable.response_time_per_incident ~ Distribution(
-//       2023_baseline_hours: ~720,
-//       2026_actual_hours:   ~6,
-//       2027+_post_astranis: ~ Distribution(
-//           median: 4,
-//           tail:   bounded_by(microwave_capacity_saturation)
-//       )
-//   ) | conditional(incident_class IN {single_cable, multi_cable, network_wide})
-//
-//   STOCHASTIC: ROC_Public.war_likelihood_perception_12mo ~ Distribution(
-//       table:        TBD_pending_TPOF_image_OCR_or_alt_source,
-//       attribution:  derived_from(P9_bis_promotion_event)
-//   ) | gated_on(p9_bis_multi_wave_recovery)
-//
-//   STOCHASTIC: US_Exec.fms_loa_cadence ~ Distribution(
-//       issuances_per_quarter: ~ f(
-//           transactional_signal_intensity,
-//           congressional_pressure_via_caucus_density,
-//           prc_counter_framing_via_taipei_track,
-//           electoral_cycle_proximity
-//       )
-//   ) | partial_information(internal_us_exec_deliberation)
-//
-// All stochastic extensions remain blocked under q1_gww3_documentation
-// (open since 2026-04-30; 15 days at this fire). The deterministic
-// skeleton above is hand-validated against gsl_ops.lark v1.2 and is
-// parseable as a Lark Earley input. Day-9 work plan:
-//   (a) runtime parse-verification of the deterministic block via
-//       hassaleh.engine.parser;
-//   (b) Nisaba-territory encoding of the deterministic skeleton plus
-//       parameterized stochastic shells into simulations/game_theory.py
-//       for the ROC-player additions (sister artifact to the planned
-//       Day-7 simulation file).
+# ═══════════════════════════════════════════════════════════════════════════
+# STOCHASTIC EXTENSIONS — pending q1_gww3_documentation closure
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# The block below is documentary pseudocode, not valid GSL. It will
+# not parse against gsl_ops.lark. Same convention as Day-7 S8.
+#
+#   STOCHASTIC: ROC_Exec.threat_perception_state ~ Distribution(
+#       escalating:   0.85,   // current 2026 regime
+#       de_escalating: 0.10,  // requires major PRC concession event
+#       neutral:      0.05    // requires 2028 ROC executive transition
+#   ) | conditional(roc_executive_administration == "Lai")
+#
+#   STOCHASTIC: KMT.caucus_factional_balance ~ Distribution(
+#       cheng_fu_chi_dominant: f(chair_position, financial_discipline_framing),
+#       han_hsu_dominant:      g(speaker_role_active, defense_substrate_framing),
+#       huang_fuhsing_expulsion_event: h(internal_discipline_actions)
+#   ) | partial_information(public_opinion_pressure)
+#
+#   STOCHASTIC: ROC_Exec.approval_volatility ~ Distribution(
+#       sigma_8wave:   ~ N(7.4_pp, prior_2024_2025_history),
+#       drift_term:    bounded_by(doctrinal_speech_act_recovery)
+#   )
+#
+#   STOCHASTIC: ROC_Cable.response_time_per_incident ~ Distribution(
+#       2023_baseline_hours: ~720,
+#       2026_actual_hours:   ~6,
+#       2027+_post_astranis: ~ Distribution(
+#           median: 4,
+#           tail:   bounded_by(microwave_capacity_saturation)
+#       )
+#   ) | conditional(incident_class IN {single_cable, multi_cable, network_wide})
+#
+#   STOCHASTIC: ROC_Public.war_likelihood_perception_12mo ~ Distribution(
+#       table:        TBD_pending_TPOF_image_OCR_or_alt_source,
+#       attribution:  derived_from(P9_bis_promotion_event)
+#   ) | gated_on(p9_bis_multi_wave_recovery)
+#
+#   STOCHASTIC: US_Exec.fms_loa_cadence ~ Distribution(
+#       issuances_per_quarter: ~ f(
+#           transactional_signal_intensity,
+#           congressional_pressure_via_caucus_density,
+#           prc_counter_framing_via_taipei_track,
+#           electoral_cycle_proximity
+#       )
+#   ) | partial_information(internal_us_exec_deliberation)
+#
+# All stochastic extensions remain blocked under q1_gww3_documentation
+# (open since 2026-04-30; 15 days at this fire). The deterministic
+# skeleton above is hand-validated against gsl_ops.lark v1.2 and is
+# parseable as a Lark Earley input. Day-9 work plan:
+#   (a) runtime parse-verification of the deterministic block via
+#       hassaleh.engine.parser;
+#   (b) Nisaba-territory encoding of the deterministic skeleton plus
+#       parameterized stochastic shells into simulations/game_theory.py
+#       for the ROC-player additions (sister artifact to the planned
+#       Day-7 simulation file).
