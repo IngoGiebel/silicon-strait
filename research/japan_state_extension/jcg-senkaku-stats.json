@@ -1,0 +1,778 @@
+{
+  "period_start": "2012-09",
+  "period_end": "2025-05",
+  "n_months": 153,
+  "contiguous_zone": {
+    "min": 20,
+    "max": 147,
+    "mean": 82.522876,
+    "median": 87,
+    "stdev": 29.263343,
+    "trend_slope_per_year": 4.727273
+  },
+  "territorial_water": {
+    "min": 0,
+    "max": 28,
+    "mean": 9.490196,
+    "median": 8,
+    "stdev": 4.615645,
+    "trend_slope_per_year": -0.212698
+  },
+  "rolling_12_month_means": [
+    {
+      "end_month": "2013-08",
+      "contig_mean_12": 84.916667,
+      "territorial_mean_12": 17
+    },
+    {
+      "end_month": "2013-09",
+      "contig_mean_12": 84.583333,
+      "territorial_mean_12": 17.75
+    },
+    {
+      "end_month": "2013-10",
+      "contig_mean_12": 76.583333,
+      "territorial_mean_12": 16.833333
+    },
+    {
+      "end_month": "2013-11",
+      "contig_mean_12": 70.666667,
+      "territorial_mean_12": 16.583333
+    },
+    {
+      "end_month": "2013-12",
+      "contig_mean_12": 68.25,
+      "territorial_mean_12": 15.666667
+    },
+    {
+      "end_month": "2014-01",
+      "contig_mean_12": 69.5,
+      "territorial_mean_12": 14.75
+    },
+    {
+      "end_month": "2014-02",
+      "contig_mean_12": 68.416667,
+      "territorial_mean_12": 14.083333
+    },
+    {
+      "end_month": "2014-03",
+      "contig_mean_12": 68.333333,
+      "territorial_mean_12": 13.666667
+    },
+    {
+      "end_month": "2014-04",
+      "contig_mean_12": 68.166667,
+      "territorial_mean_12": 12.25
+    },
+    {
+      "end_month": "2014-05",
+      "contig_mean_12": 63.583333,
+      "territorial_mean_12": 11.416667
+    },
+    {
+      "end_month": "2014-06",
+      "contig_mean_12": 61.166667,
+      "territorial_mean_12": 11.166667
+    },
+    {
+      "end_month": "2014-07",
+      "contig_mean_12": 58.75,
+      "territorial_mean_12": 10.333333
+    },
+    {
+      "end_month": "2014-08",
+      "contig_mean_12": 58.833333,
+      "territorial_mean_12": 8.833333
+    },
+    {
+      "end_month": "2014-09",
+      "contig_mean_12": 61.583333,
+      "territorial_mean_12": 7.833333
+    },
+    {
+      "end_month": "2014-10",
+      "contig_mean_12": 63.416667,
+      "territorial_mean_12": 7.916667
+    },
+    {
+      "end_month": "2014-11",
+      "contig_mean_12": 62.5,
+      "territorial_mean_12": 7.583333
+    },
+    {
+      "end_month": "2014-12",
+      "contig_mean_12": 60.75,
+      "territorial_mean_12": 7.333333
+    },
+    {
+      "end_month": "2015-01",
+      "contig_mean_12": 57.416667,
+      "territorial_mean_12": 7.5
+    },
+    {
+      "end_month": "2015-02",
+      "contig_mean_12": 60.083333,
+      "territorial_mean_12": 7.416667
+    },
+    {
+      "end_month": "2015-03",
+      "contig_mean_12": 59.166667,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2015-04",
+      "contig_mean_12": 57.666667,
+      "territorial_mean_12": 7.75
+    },
+    {
+      "end_month": "2015-05",
+      "contig_mean_12": 60.583333,
+      "territorial_mean_12": 8.083333
+    },
+    {
+      "end_month": "2015-06",
+      "contig_mean_12": 63.5,
+      "territorial_mean_12": 8.25
+    },
+    {
+      "end_month": "2015-07",
+      "contig_mean_12": 61.916667,
+      "territorial_mean_12": 8.5
+    },
+    {
+      "end_month": "2015-08",
+      "contig_mean_12": 59,
+      "territorial_mean_12": 8.166667
+    },
+    {
+      "end_month": "2015-09",
+      "contig_mean_12": 56.583333,
+      "territorial_mean_12": 8.083333
+    },
+    {
+      "end_month": "2015-10",
+      "contig_mean_12": 56.916667,
+      "territorial_mean_12": 7.916667
+    },
+    {
+      "end_month": "2015-11",
+      "contig_mean_12": 58.083333,
+      "territorial_mean_12": 7.916667
+    },
+    {
+      "end_month": "2015-12",
+      "contig_mean_12": 59.083333,
+      "territorial_mean_12": 7.916667
+    },
+    {
+      "end_month": "2016-01",
+      "contig_mean_12": 59.25,
+      "territorial_mean_12": 7.916667
+    },
+    {
+      "end_month": "2016-02",
+      "contig_mean_12": 55.333333,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2016-03",
+      "contig_mean_12": 55.25,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2016-04",
+      "contig_mean_12": 56.583333,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2016-05",
+      "contig_mean_12": 57.666667,
+      "territorial_mean_12": 7.833333
+    },
+    {
+      "end_month": "2016-06",
+      "contig_mean_12": 58.083333,
+      "territorial_mean_12": 7.916667
+    },
+    {
+      "end_month": "2016-07",
+      "contig_mean_12": 59.666667,
+      "territorial_mean_12": 8.083333
+    },
+    {
+      "end_month": "2016-08",
+      "contig_mean_12": 67.416667,
+      "territorial_mean_12": 9.5
+    },
+    {
+      "end_month": "2016-09",
+      "contig_mean_12": 65.166667,
+      "territorial_mean_12": 9.416667
+    },
+    {
+      "end_month": "2016-10",
+      "contig_mean_12": 63.25,
+      "territorial_mean_12": 9.5
+    },
+    {
+      "end_month": "2016-11",
+      "contig_mean_12": 63.25,
+      "territorial_mean_12": 9.833333
+    },
+    {
+      "end_month": "2016-12",
+      "contig_mean_12": 62.666667,
+      "territorial_mean_12": 10.083333
+    },
+    {
+      "end_month": "2017-01",
+      "contig_mean_12": 62.916667,
+      "territorial_mean_12": 10.25
+    },
+    {
+      "end_month": "2017-02",
+      "contig_mean_12": 65.25,
+      "territorial_mean_12": 10.416667
+    },
+    {
+      "end_month": "2017-03",
+      "contig_mean_12": 64.5,
+      "territorial_mean_12": 10.5
+    },
+    {
+      "end_month": "2017-04",
+      "contig_mean_12": 64.5,
+      "territorial_mean_12": 10.75
+    },
+    {
+      "end_month": "2017-05",
+      "contig_mean_12": 64.25,
+      "territorial_mean_12": 10.833333
+    },
+    {
+      "end_month": "2017-06",
+      "contig_mean_12": 62.416667,
+      "territorial_mean_12": 11.083333
+    },
+    {
+      "end_month": "2017-07",
+      "contig_mean_12": 65.666667,
+      "territorial_mean_12": 11.333333
+    },
+    {
+      "end_month": "2017-08",
+      "contig_mean_12": 58.25,
+      "territorial_mean_12": 10.083333
+    },
+    {
+      "end_month": "2017-09",
+      "contig_mean_12": 59.75,
+      "territorial_mean_12": 10.083333
+    },
+    {
+      "end_month": "2017-10",
+      "contig_mean_12": 59.666667,
+      "territorial_mean_12": 9.75
+    },
+    {
+      "end_month": "2017-11",
+      "contig_mean_12": 59.25,
+      "territorial_mean_12": 9.333333
+    },
+    {
+      "end_month": "2017-12",
+      "contig_mean_12": 58,
+      "territorial_mean_12": 9
+    },
+    {
+      "end_month": "2018-01",
+      "contig_mean_12": 57,
+      "territorial_mean_12": 8.75
+    },
+    {
+      "end_month": "2018-02",
+      "contig_mean_12": 55.416667,
+      "territorial_mean_12": 8.666667
+    },
+    {
+      "end_month": "2018-03",
+      "contig_mean_12": 55.833333,
+      "territorial_mean_12": 8.416667
+    },
+    {
+      "end_month": "2018-04",
+      "contig_mean_12": 55.5,
+      "territorial_mean_12": 8
+    },
+    {
+      "end_month": "2018-05",
+      "contig_mean_12": 52.833333,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2018-06",
+      "contig_mean_12": 51.75,
+      "territorial_mean_12": 7.333333
+    },
+    {
+      "end_month": "2018-07",
+      "contig_mean_12": 47.833333,
+      "territorial_mean_12": 6.916667
+    },
+    {
+      "end_month": "2018-08",
+      "contig_mean_12": 46.666667,
+      "territorial_mean_12": 6.916667
+    },
+    {
+      "end_month": "2018-09",
+      "contig_mean_12": 45.583333,
+      "territorial_mean_12": 6.583333
+    },
+    {
+      "end_month": "2018-10",
+      "contig_mean_12": 48.5,
+      "territorial_mean_12": 6.583333
+    },
+    {
+      "end_month": "2018-11",
+      "contig_mean_12": 50.25,
+      "territorial_mean_12": 6.333333
+    },
+    {
+      "end_month": "2018-12",
+      "contig_mean_12": 51.25,
+      "territorial_mean_12": 5.833333
+    },
+    {
+      "end_month": "2019-01",
+      "contig_mean_12": 55,
+      "territorial_mean_12": 6.25
+    },
+    {
+      "end_month": "2019-02",
+      "contig_mean_12": 57,
+      "territorial_mean_12": 6.75
+    },
+    {
+      "end_month": "2019-03",
+      "contig_mean_12": 57.666667,
+      "territorial_mean_12": 7.166667
+    },
+    {
+      "end_month": "2019-04",
+      "contig_mean_12": 59.666667,
+      "territorial_mean_12": 7.583333
+    },
+    {
+      "end_month": "2019-05",
+      "contig_mean_12": 65.5,
+      "territorial_mean_12": 8.083333
+    },
+    {
+      "end_month": "2019-06",
+      "contig_mean_12": 69.833333,
+      "territorial_mean_12": 8.083333
+    },
+    {
+      "end_month": "2019-07",
+      "contig_mean_12": 75.583333,
+      "territorial_mean_12": 8.5
+    },
+    {
+      "end_month": "2019-08",
+      "contig_mean_12": 80.083333,
+      "territorial_mean_12": 8.833333
+    },
+    {
+      "end_month": "2019-09",
+      "contig_mean_12": 82.416667,
+      "territorial_mean_12": 8.833333
+    },
+    {
+      "end_month": "2019-10",
+      "contig_mean_12": 86.5,
+      "territorial_mean_12": 9.5
+    },
+    {
+      "end_month": "2019-11",
+      "contig_mean_12": 86.166667,
+      "territorial_mean_12": 9.5
+    },
+    {
+      "end_month": "2019-12",
+      "contig_mean_12": 91.416667,
+      "territorial_mean_12": 10.5
+    },
+    {
+      "end_month": "2020-01",
+      "contig_mean_12": 93.75,
+      "territorial_mean_12": 10.166667
+    },
+    {
+      "end_month": "2020-02",
+      "contig_mean_12": 96.75,
+      "territorial_mean_12": 9.833333
+    },
+    {
+      "end_month": "2020-03",
+      "contig_mean_12": 100.166667,
+      "territorial_mean_12": 9.166667
+    },
+    {
+      "end_month": "2020-04",
+      "contig_mean_12": 99.333333,
+      "territorial_mean_12": 8.833333
+    },
+    {
+      "end_month": "2020-05",
+      "contig_mean_12": 97.833333,
+      "territorial_mean_12": 8.333333
+    },
+    {
+      "end_month": "2020-06",
+      "contig_mean_12": 98.666667,
+      "territorial_mean_12": 8.333333
+    },
+    {
+      "end_month": "2020-07",
+      "contig_mean_12": 98.583333,
+      "territorial_mean_12": 8.333333
+    },
+    {
+      "end_month": "2020-08",
+      "contig_mean_12": 97.416667,
+      "territorial_mean_12": 8.166667
+    },
+    {
+      "end_month": "2020-09",
+      "contig_mean_12": 98.083333,
+      "territorial_mean_12": 7.833333
+    },
+    {
+      "end_month": "2020-10",
+      "contig_mean_12": 97.166667,
+      "territorial_mean_12": 7.5
+    },
+    {
+      "end_month": "2020-11",
+      "contig_mean_12": 98.833333,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2020-12",
+      "contig_mean_12": 96.75,
+      "territorial_mean_12": 7.333333
+    },
+    {
+      "end_month": "2021-01",
+      "contig_mean_12": 96.25,
+      "territorial_mean_12": 7.166667
+    },
+    {
+      "end_month": "2021-02",
+      "contig_mean_12": 96.75,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2021-03",
+      "contig_mean_12": 97.666667,
+      "territorial_mean_12": 7.833333
+    },
+    {
+      "end_month": "2021-04",
+      "contig_mean_12": 98.833333,
+      "territorial_mean_12": 8
+    },
+    {
+      "end_month": "2021-05",
+      "contig_mean_12": 99.166667,
+      "territorial_mean_12": 8.5
+    },
+    {
+      "end_month": "2021-06",
+      "contig_mean_12": 99.916667,
+      "territorial_mean_12": 9.166667
+    },
+    {
+      "end_month": "2021-07",
+      "contig_mean_12": 97.666667,
+      "territorial_mean_12": 9
+    },
+    {
+      "end_month": "2021-08",
+      "contig_mean_12": 100.416667,
+      "territorial_mean_12": 9.166667
+    },
+    {
+      "end_month": "2021-09",
+      "contig_mean_12": 100.75,
+      "territorial_mean_12": 9.5
+    },
+    {
+      "end_month": "2021-10",
+      "contig_mean_12": 100.5,
+      "territorial_mean_12": 9.166667
+    },
+    {
+      "end_month": "2021-11",
+      "contig_mean_12": 99.833333,
+      "territorial_mean_12": 9
+    },
+    {
+      "end_month": "2021-12",
+      "contig_mean_12": 101.833333,
+      "territorial_mean_12": 9.166667
+    },
+    {
+      "end_month": "2022-01",
+      "contig_mean_12": 103.083333,
+      "territorial_mean_12": 9.166667
+    },
+    {
+      "end_month": "2022-02",
+      "contig_mean_12": 101.416667,
+      "territorial_mean_12": 8.333333
+    },
+    {
+      "end_month": "2022-03",
+      "contig_mean_12": 100.333333,
+      "territorial_mean_12": 8.166667
+    },
+    {
+      "end_month": "2022-04",
+      "contig_mean_12": 99.166667,
+      "territorial_mean_12": 7.666667
+    },
+    {
+      "end_month": "2022-05",
+      "contig_mean_12": 99,
+      "territorial_mean_12": 7.166667
+    },
+    {
+      "end_month": "2022-06",
+      "contig_mean_12": 98.666667,
+      "territorial_mean_12": 7
+    },
+    {
+      "end_month": "2022-07",
+      "contig_mean_12": 100.5,
+      "territorial_mean_12": 7.166667
+    },
+    {
+      "end_month": "2022-08",
+      "contig_mean_12": 100.833333,
+      "territorial_mean_12": 7.5
+    },
+    {
+      "end_month": "2022-09",
+      "contig_mean_12": 99.416667,
+      "territorial_mean_12": 7.75
+    },
+    {
+      "end_month": "2022-10",
+      "contig_mean_12": 97.5,
+      "territorial_mean_12": 7.916667
+    },
+    {
+      "end_month": "2022-11",
+      "contig_mean_12": 100,
+      "territorial_mean_12": 8.25
+    },
+    {
+      "end_month": "2022-12",
+      "contig_mean_12": 100.083333,
+      "territorial_mean_12": 8.583333
+    },
+    {
+      "end_month": "2023-01",
+      "contig_mean_12": 100.083333,
+      "territorial_mean_12": 8.75
+    },
+    {
+      "end_month": "2023-02",
+      "contig_mean_12": 101.583333,
+      "territorial_mean_12": 8.75
+    },
+    {
+      "end_month": "2023-03",
+      "contig_mean_12": 103.083333,
+      "territorial_mean_12": 10.083333
+    },
+    {
+      "end_month": "2023-04",
+      "contig_mean_12": 105,
+      "territorial_mean_12": 10.666667
+    },
+    {
+      "end_month": "2023-05",
+      "contig_mean_12": 103.583333,
+      "territorial_mean_12": 11
+    },
+    {
+      "end_month": "2023-06",
+      "contig_mean_12": 103.083333,
+      "territorial_mean_12": 10.5
+    },
+    {
+      "end_month": "2023-07",
+      "contig_mean_12": 102.5,
+      "territorial_mean_12": 10
+    },
+    {
+      "end_month": "2023-08",
+      "contig_mean_12": 101.666667,
+      "territorial_mean_12": 10
+    },
+    {
+      "end_month": "2023-09",
+      "contig_mean_12": 103.5,
+      "territorial_mean_12": 10.083333
+    },
+    {
+      "end_month": "2023-10",
+      "contig_mean_12": 106.25,
+      "territorial_mean_12": 10.25
+    },
+    {
+      "end_month": "2023-11",
+      "contig_mean_12": 105.833333,
+      "territorial_mean_12": 11.25
+    },
+    {
+      "end_month": "2023-12",
+      "contig_mean_12": 106.833333,
+      "territorial_mean_12": 10.75
+    },
+    {
+      "end_month": "2024-01",
+      "contig_mean_12": 107.666667,
+      "territorial_mean_12": 10.583333
+    },
+    {
+      "end_month": "2024-02",
+      "contig_mean_12": 109.333333,
+      "territorial_mean_12": 10.583333
+    },
+    {
+      "end_month": "2024-03",
+      "contig_mean_12": 109.666667,
+      "territorial_mean_12": 9.75
+    },
+    {
+      "end_month": "2024-04",
+      "contig_mean_12": 109.916667,
+      "territorial_mean_12": 9.916667
+    },
+    {
+      "end_month": "2024-05",
+      "contig_mean_12": 111.666667,
+      "territorial_mean_12": 9.833333
+    },
+    {
+      "end_month": "2024-06",
+      "contig_mean_12": 112.333333,
+      "territorial_mean_12": 10.583333
+    },
+    {
+      "end_month": "2024-07",
+      "contig_mean_12": 112.333333,
+      "territorial_mean_12": 11.583333
+    },
+    {
+      "end_month": "2024-08",
+      "contig_mean_12": 113.166667,
+      "territorial_mean_12": 11.25
+    },
+    {
+      "end_month": "2024-09",
+      "contig_mean_12": 114.25,
+      "territorial_mean_12": 10.916667
+    },
+    {
+      "end_month": "2024-10",
+      "contig_mean_12": 112.25,
+      "territorial_mean_12": 11
+    },
+    {
+      "end_month": "2024-11",
+      "contig_mean_12": 112.083333,
+      "territorial_mean_12": 9.666667
+    },
+    {
+      "end_month": "2024-12",
+      "contig_mean_12": 112.666667,
+      "territorial_mean_12": 9.583333
+    },
+    {
+      "end_month": "2025-01",
+      "contig_mean_12": 112.916667,
+      "territorial_mean_12": 9.416667
+    },
+    {
+      "end_month": "2025-02",
+      "contig_mean_12": 112.416667,
+      "territorial_mean_12": 9.416667
+    },
+    {
+      "end_month": "2025-03",
+      "contig_mean_12": 112.166667,
+      "territorial_mean_12": 9.833333
+    },
+    {
+      "end_month": "2025-04",
+      "contig_mean_12": 112,
+      "territorial_mean_12": 9.416667
+    },
+    {
+      "end_month": "2025-05",
+      "contig_mean_12": 112.166667,
+      "territorial_mean_12": 9.5
+    }
+  ],
+  "peak_months_contiguous": [
+    {
+      "month": "2016-08",
+      "count": 147
+    },
+    {
+      "month": "2019-05",
+      "count": 132
+    },
+    {
+      "month": "2012-11",
+      "count": 124
+    },
+    {
+      "month": "2012-10",
+      "count": 122
+    },
+    {
+      "month": "2025-05",
+      "count": 122
+    }
+  ],
+  "peak_months_territorial": [
+    {
+      "month": "2013-08",
+      "count": 28
+    },
+    {
+      "month": "2013-04",
+      "count": 25
+    },
+    {
+      "month": "2016-08",
+      "count": 23
+    },
+    {
+      "month": "2013-09",
+      "count": 22
+    },
+    {
+      "month": "2012-12",
+      "count": 21
+    }
+  ],
+  "post_2021_海警法_breakpoint_test": "Visual/OLS read: yes for a level shift in contiguous-zone operating tempo after the 2021-01-22 PRC Maritime Police Law, but not a clean upward post-law slope break. Pre-law through 2021-01 contiguous mean=70.07/month, slope=2.50/year; post-law from 2021-02 mean=106.71/month, slope=3.56/year. Territorial-water incursions rise more modestly in level (pre mean=9.49/month, slope=-0.76/year; post mean=9.50/month, slope=0.11/year). Interpret as normalization at a higher baseline rather than accelerating escalation after enactment."
+}
