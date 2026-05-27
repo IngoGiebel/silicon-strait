@@ -392,6 +392,97 @@ EVERY "P1D":
 # promote) P9-bis to deterministic-multi-wave.
 
 # ═══════════════════════════════════════════════════════════════════════════
+# P28 — Substrate-discriminating Tier-3 floor predicate family
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# Emerged Day-13 (candidate) -> Day-14 (active, 3 substrates) ->
+# Day-17 (7 substrates, 3 lambda-classes). Day-18 consolidation.
+#
+# Each P28(c) evaluates whether substrate c admits Tier-3
+# status-narrowing instruments that survive without producing a
+# bilateral crisis. The predicate is tier-indexed: the VALUE of
+# the highest admitted tier is itself a substrate property.
+#
+# Parameters:
+#   c = substrate identifier (EU, JPN, PHL, UK, AUS, CAN, US)
+#   t = tier being tested (1, 2, 3)
+#   lambda = lexical-class (A, B, C, na)
+#   kappa = commission presence (present, absent)
+#
+# Ceiling ordinal:
+#   0 = architectural absence (no Tier-3 register)
+#   1 = committee report / committee discussion
+#   2 = EP plenary vote (supermajority, non-binding)
+#   3 = 1st reading (House) / 2nd reading (Senate)
+#   4 = enacted law (multiple statutes)
+#
+# lambda -> ceiling mapping (N=4, observed, not causal):
+#   A (collapsed)  -> ceiling in {1}       (committee)
+#   B (preserved)  -> ceiling in {3}       (reading)
+#   C (dual)       -> ceiling in {4}       (enacted law)
+#   na             -> ceiling in {0, 1, 2} (substrate-specific)
+
+# -- P28.setup: substrate parameter declarations -------------------------
+
+MATCH (s:Substrate {id: "EU"}):
+    game_state.p28_eu_lambda = "na"
+    game_state.p28_eu_kappa = "absent"
+    game_state.p28_eu_ceiling = 2
+    game_state.p28_eu_result = "pass"
+
+MATCH (s:Substrate {id: "JPN"}):
+    game_state.p28_jpn_lambda = "na"
+    game_state.p28_jpn_kappa = "absent"
+    game_state.p28_jpn_ceiling = 1
+    game_state.p28_jpn_result = "pass"
+
+MATCH (s:Substrate {id: "PHL"}):
+    game_state.p28_phl_lambda = "na"
+    game_state.p28_phl_kappa = "absent"
+    game_state.p28_phl_ceiling = 0
+    game_state.p28_phl_result = "arch_absence"
+
+MATCH (s:Substrate {id: "UK"}):
+    game_state.p28_uk_lambda = "A"
+    game_state.p28_uk_kappa = "absent"
+    game_state.p28_uk_ceiling = 1
+    game_state.p28_uk_result = "pass"
+
+MATCH (s:Substrate {id: "AUS"}):
+    game_state.p28_aus_lambda = "A"
+    game_state.p28_aus_kappa = "absent"
+    game_state.p28_aus_ceiling = 1
+    game_state.p28_aus_result = "pass"
+
+MATCH (s:Substrate {id: "CAN"}):
+    game_state.p28_can_lambda = "B"
+    game_state.p28_can_kappa = "present"
+    game_state.p28_can_ceiling = 3
+    game_state.p28_can_result = "pass_qualified"
+
+MATCH (s:Substrate {id: "US"}):
+    game_state.p28_us_lambda = "C"
+    game_state.p28_us_kappa = "absent"
+    game_state.p28_us_ceiling = 4
+    game_state.p28_us_result = "pass"
+    game_state.p28_us_d1_verb = "renshi_dao"
+    game_state.p28_us_d2_verb = "chengren"
+    game_state.p28_us_legislative_floor = "TRA_1979"
+
+# -- P28.test: generic three-condition evaluation -------------------------
+
+MATCH (c:Substrate_Test {predicate: "P28", substrate: s.id}):
+    IF c.constitutional_grounding == true and c.executive_independence == true and c.non_crisis_deviation == true:
+        game_state.p28_consolidated_pass_count = game_state.p28_consolidated_pass_count + 1
+        LOG "P28 PASS on substrate" LEVEL "info"
+    IF c.constitutional_grounding == true and c.executive_independence == true and c.non_crisis_deviation == false:
+        game_state.p28_consolidated_fail_count = game_state.p28_consolidated_fail_count + 1
+        LOG "P28 FAIL on substrate (crisis-producing)" LEVEL "warn"
+    IF c.constitutional_grounding == false:
+        game_state.p28_arch_absence_count = game_state.p28_arch_absence_count + 1
+        LOG "P28 ARCH-ABSENCE on substrate" LEVEL "info"
+
+# ═══════════════════════════════════════════════════════════════════════════
 # STOCHASTIC EXTENSIONS — pending q1_gww3_documentation closure
 # ═══════════════════════════════════════════════════════════════════════════
 #
