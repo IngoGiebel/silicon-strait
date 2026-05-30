@@ -1,0 +1,270 @@
+{
+  "method": {
+    "rolling_window_days": 60,
+    "event_window_trading_days": 20,
+    "return_type": "log adjusted-close",
+    "correlation_type": "Pearson rolling-60",
+    "summary_statistic": "median of correlation within \u00b120-td window"
+  },
+  "tickers_pulled": [
+    "TSM",
+    "005930.KS",
+    "BHP.AX",
+    "NVDA"
+  ],
+  "date_range_pulled": {
+    "start": "2022-04-01",
+    "end": "2025-12-30",
+    "n_rows": 973
+  },
+  "per_event_pair_results": {
+    "PEL_2022": {
+      "ROK_KR": {
+        "pair_id": "ROK_KR",
+        "event_id": "PEL_2022",
+        "event_date": "2022-08-02",
+        "window_start": "2022-07-18",
+        "window_end": "2022-09-01",
+        "n_obs_in_window": 32,
+        "median_corr": 0.34011230130893455,
+        "min_corr": 0.28900520848252254,
+        "max_corr": 0.3906646473236245,
+        "iqr_corr": 0.05395456499386592
+      },
+      "AUS_BHP": {
+        "pair_id": "AUS_BHP",
+        "event_id": "PEL_2022",
+        "event_date": "2022-08-02",
+        "window_start": "2022-07-13",
+        "window_end": "2022-08-30",
+        "n_obs_in_window": 35,
+        "median_corr": 0.08782792666696533,
+        "min_corr": 0.015207999429076496,
+        "max_corr": 0.2829730703724694,
+        "iqr_corr": 0.15556603993737844
+      },
+      "NVDA_US": {
+        "pair_id": "NVDA_US",
+        "event_id": "PEL_2022",
+        "event_date": "2022-08-02",
+        "window_start": "2022-07-06",
+        "window_end": "2022-08-30",
+        "n_obs_in_window": 40,
+        "median_corr": 0.8270582902461066,
+        "min_corr": 0.7871579991771592,
+        "max_corr": 0.8707329869848213,
+        "iqr_corr": 0.0450816257794906
+      }
+    },
+    "DUV_2023": {
+      "ROK_KR": {
+        "pair_id": "ROK_KR",
+        "event_id": "DUV_2023",
+        "event_date": "2023-09-04",
+        "window_start": "2023-08-03",
+        "window_end": "2023-10-13",
+        "n_obs_in_window": 41,
+        "median_corr": 0.17877604719957527,
+        "min_corr": 0.11086831923870373,
+        "max_corr": 0.2521032684160201,
+        "iqr_corr": 0.05299443523052219
+      },
+      "AUS_BHP": {
+        "pair_id": "AUS_BHP",
+        "event_id": "DUV_2023",
+        "event_date": "2023-09-04",
+        "window_start": "2023-08-07",
+        "window_end": "2023-10-04",
+        "n_obs_in_window": 41,
+        "median_corr": 0.22489154445427487,
+        "min_corr": 0.09629314147358362,
+        "max_corr": 0.31066346985723015,
+        "iqr_corr": 0.1274512370965466
+      },
+      "NVDA_US": {
+        "pair_id": "NVDA_US",
+        "event_id": "DUV_2023",
+        "event_date": "2023-09-04",
+        "window_start": "2023-08-07",
+        "window_end": "2023-10-04",
+        "n_obs_in_window": 41,
+        "median_corr": 0.6657069824874039,
+        "min_corr": 0.546215416077351,
+        "max_corr": 0.7959136311942857,
+        "iqr_corr": 0.1514942716199148
+      }
+    },
+    "LAI_2024": {
+      "ROK_KR": {
+        "pair_id": "ROK_KR",
+        "event_id": "LAI_2024",
+        "event_date": "2024-05-20",
+        "window_start": "2024-04-12",
+        "window_end": "2024-06-25",
+        "n_obs_in_window": 41,
+        "median_corr": 0.068837898847058,
+        "min_corr": -0.048062710985683446,
+        "max_corr": 0.17077292120454568,
+        "iqr_corr": 0.10680966041188587
+      },
+      "AUS_BHP": {
+        "pair_id": "AUS_BHP",
+        "event_id": "LAI_2024",
+        "event_date": "2024-05-20",
+        "window_start": "2024-04-18",
+        "window_end": "2024-06-25",
+        "n_obs_in_window": 41,
+        "median_corr": 0.10188630290793077,
+        "min_corr": -0.03585366635584959,
+        "max_corr": 0.13782744110910136,
+        "iqr_corr": 0.036594456088876376
+      },
+      "NVDA_US": {
+        "pair_id": "NVDA_US",
+        "event_id": "LAI_2024",
+        "event_date": "2024-05-20",
+        "window_start": "2024-04-22",
+        "window_end": "2024-06-21",
+        "n_obs_in_window": 41,
+        "median_corr": 0.5966547556510435,
+        "min_corr": 0.5591341305577138,
+        "max_corr": 0.6660169992601566,
+        "iqr_corr": 0.054890602118579546
+      }
+    },
+    "PRC_2025a": {
+      "ROK_KR": {
+        "pair_id": "ROK_KR",
+        "event_id": "PRC_2025a",
+        "event_date": "2025-10-10",
+        "window_start": "2025-09-03",
+        "window_end": "2025-11-10",
+        "n_obs_in_window": 41,
+        "median_corr": 0.2541315436406653,
+        "min_corr": 0.12043422660258571,
+        "max_corr": 0.3166028527728946,
+        "iqr_corr": 0.07082845658390907
+      },
+      "AUS_BHP": {
+        "pair_id": "AUS_BHP",
+        "event_id": "PRC_2025a",
+        "event_date": "2025-10-10",
+        "window_start": "2025-09-12",
+        "window_end": "2025-11-07",
+        "n_obs_in_window": 41,
+        "median_corr": -0.1565999354238206,
+        "min_corr": -0.3239962405326936,
+        "max_corr": -0.014173520453619207,
+        "iqr_corr": 0.10503244026727379
+      },
+      "NVDA_US": {
+        "pair_id": "NVDA_US",
+        "event_id": "PRC_2025a",
+        "event_date": "2025-10-10",
+        "window_start": "2025-09-12",
+        "window_end": "2025-11-07",
+        "n_obs_in_window": 41,
+        "median_corr": 0.5349408321621911,
+        "min_corr": 0.4338913218759306,
+        "max_corr": 0.6653353897009546,
+        "iqr_corr": 0.04052164629336519
+      }
+    },
+    "PRC_2025i": {
+      "ROK_KR": {
+        "pair_id": "ROK_KR",
+        "event_id": "PRC_2025i",
+        "event_date": "2025-10-14",
+        "window_start": "2025-09-04",
+        "window_end": "2025-11-11",
+        "n_obs_in_window": 41,
+        "median_corr": 0.25317666055422045,
+        "min_corr": 0.12043422660258571,
+        "max_corr": 0.3166028527728946,
+        "iqr_corr": 0.07082845658390907
+      },
+      "AUS_BHP": {
+        "pair_id": "AUS_BHP",
+        "event_id": "PRC_2025i",
+        "event_date": "2025-10-14",
+        "window_start": "2025-09-16",
+        "window_end": "2025-11-11",
+        "n_obs_in_window": 41,
+        "median_corr": -0.1565999354238206,
+        "min_corr": -0.3239962405326936,
+        "max_corr": -0.05999312750319937,
+        "iqr_corr": 0.10503244026727379
+      },
+      "NVDA_US": {
+        "pair_id": "NVDA_US",
+        "event_id": "PRC_2025i",
+        "event_date": "2025-10-14",
+        "window_start": "2025-09-16",
+        "window_end": "2025-11-11",
+        "n_obs_in_window": 41,
+        "median_corr": 0.5349408321621911,
+        "min_corr": 0.4338913218759306,
+        "max_corr": 0.6377479499309822,
+        "iqr_corr": 0.04052164629336519
+      }
+    }
+  },
+  "ordering_verdicts": {
+    "PEL_2022": {
+      "verdict": "preserved",
+      "rok_median": 0.34011230130893455,
+      "bhp_median": 0.08782792666696533,
+      "nvda_median": 0.8270582902461066,
+      "delta": 0.25228437464196923,
+      "ordering_preserved": true
+    },
+    "DUV_2023": {
+      "verdict": "violated",
+      "rok_median": 0.17877604719957527,
+      "bhp_median": 0.22489154445427487,
+      "nvda_median": 0.6657069824874039,
+      "delta": -0.0461154972546996,
+      "ordering_preserved": false
+    },
+    "LAI_2024": {
+      "verdict": "violated",
+      "rok_median": 0.068837898847058,
+      "bhp_median": 0.10188630290793077,
+      "nvda_median": 0.5966547556510435,
+      "delta": -0.03304840406087277,
+      "ordering_preserved": false
+    },
+    "PRC_2025a": {
+      "verdict": "preserved",
+      "rok_median": 0.2541315436406653,
+      "bhp_median": -0.1565999354238206,
+      "nvda_median": 0.5349408321621911,
+      "delta": 0.4107314790644859,
+      "ordering_preserved": true
+    },
+    "PRC_2025i": {
+      "verdict": "preserved",
+      "rok_median": 0.25317666055422045,
+      "bhp_median": -0.1565999354238206,
+      "nvda_median": 0.5349408321621911,
+      "delta": 0.40977659597804106,
+      "ordering_preserved": true
+    }
+  },
+  "prc_combined": {
+    "verdict": "preserved",
+    "anchor_a_preserved": true,
+    "anchor_i_preserved": true,
+    "ordering_preserved": true,
+    "rule": "AND of {a=2025-10-10, i=2025-10-14} anchors"
+  },
+  "event_tally": {
+    "PEL_2022": true,
+    "DUV_2023": false,
+    "LAI_2024": false,
+    "PRC_2025": true
+  },
+  "preserved_count": 2,
+  "h21_1_verdict": "INCONCLUSIVE",
+  "falsification_rule": "\u22653/4 \u2192 CONFIRMED \u00b7 2/4 \u2192 INCONCLUSIVE \u00b7 \u22641/4 \u2192 FALSIFIED"
+}
