@@ -483,6 +483,113 @@ MATCH (c:Substrate_Test {predicate: "P28", substrate: s.id}):
         LOG "P28 ARCH-ABSENCE on substrate" LEVEL "info"
 
 # ═══════════════════════════════════════════════════════════════════════════
+# Day-21 (2026-05-30) — Nexus-binding predicates P29 + P30
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# Day-21 is the first Nexus-implication publication in the series. Two new
+# deterministic predicates land here:
+#
+#   P29 — per-substrate Nexus binding via ChipExposure threshold.
+#         Static structural property: market-cap(primary_chip_ticker) / GDP(s)
+#         exceeds 0.05 → chip-supply-chain Nexus binding present.
+#
+#   P30 — coupling-property → market correlation under direct-cross-strait
+#         stress conditioning. Day-21 H21.1 test verdict = INCONCLUSIVE (2/4)
+#         against pre-committed rule (filed at silicon-strait commit 134b09b
+#         §2.2 and bridge commit 5388040 §3.2). Refinement-hypothesis H21.1a/b
+#         encoded below for forward Day-22+ testing.
+#
+# Pre-registration anchors for P29 + P30:
+#   - bridge commit 5388040 (Day-20 cron-C, 2026-05-29 14:00 CEST) §6.1
+#   - cron-A scoping commit 134b09b (Day-21 cron-A, 2026-05-30 06:00 CEST) §2.5
+#
+# Parse-status: both predicates hoisted-flat form per Day-9 q8(A) path; should
+# parse cleanly against gsl_ops.lark v1.2 deterministic subset. Parse-verify
+# queued for Day-22 cron-A per Day-9 cadence (research/audit/parse-verify-*).
+#
+# Both predicates assume substrate primary_chip_exposure_ticker is defined
+# via prior MATCH (s:Substrate) population (see P28-block substrate inventory).
+
+# -- P29 — per-substrate Nexus binding (deterministic) -------------------
+
+MATCH (s:Substrate {id: <substrate_id>}):
+    game_state.p29_substrate         = s.id
+    game_state.p29_primary_ticker    = s.primary_chip_exposure_ticker
+    game_state.p29_market_cap        = s.market_cap_primary_ticker
+    game_state.p29_gdp               = s.substrate_gdp
+    game_state.p29_chip_exposure     = s.market_cap_primary_ticker / s.substrate_gdp
+    game_state.p29_nexus_binding     = (s.market_cap_primary_ticker / s.substrate_gdp) > 0.05
+
+# -- P29.test: nexus-binding evaluation ----------------------------------
+
+MATCH (c:Substrate_Test {predicate: "P29", substrate: s.id}):
+    IF c.p29_nexus_binding == true:
+        game_state.p29_nexus_binding_count = game_state.p29_nexus_binding_count + 1
+        LOG "P29 PASS on substrate (chip-supply-chain Nexus binding present)" LEVEL "info"
+    IF c.p29_nexus_binding == false:
+        game_state.p29_no_binding_count = game_state.p29_no_binding_count + 1
+        LOG "P29 NO-BINDING on substrate (no first-order chip-supply-chain Nexus binding)" LEVEL "info"
+
+# Reference instantiations (8-substrate corpus, indicative — values to be
+# audited in cron-D Nisaba pass and updated per primary-source pull):
+#
+#   TWN: ChipExposure ≈ 1.5–2.0 (TSMC market_cap / TWN GDP); P29 PASS
+#   ROK: ChipExposure ≈ 0.5–0.6 (Samsung + SK Hynix combined / ROK GDP); P29 PASS
+#   JPN: ChipExposure(Toyota proxy) << 0.05; P29 NO-BINDING in single-ticker form
+#        — JPN binding routes via Advantest + collected semis-equipment ticker basket
+#   US:  ChipExposure(NVDA) ≈ 0.03; P29 NO-BINDING at single-ticker threshold
+#        — US binding routes via SOX sector aggregation
+#   EU:  ChipExposure(ASML proxy) ≈ 0.02; P29 NO-BINDING single-ticker
+#        — EU binding routes via Chip Act 43B EUR macro-channel
+#   PRC: ChipExposure(SMIC) < 0.01; P29 NO-BINDING (structural under-development of
+#        bleeding-edge fab capacity captured by threshold)
+
+# -- P30 — coupling-property → market correlation (deterministic, falsifiable)
+
+MATCH (s:Substrate {id: <substrate_id>}):
+    game_state.p30_substrate                = s.id
+    game_state.p30_coupling_property        = s.coupling_property
+    game_state.p30_primary_ticker           = s.primary_chip_exposure_ticker
+    game_state.p30_corr_stress              = s.corr_primary_ticker_TSM_stress_event_median
+    game_state.p30_corr_baseline            = s.corr_primary_ticker_TSM_baseline_median
+    game_state.p30_delta                    = s.corr_primary_ticker_TSM_stress_event_median - s.corr_primary_ticker_TSM_baseline_median
+    game_state.p30_event_class              = s.stress_event_class
+    game_state.p30_predicted_elevation      = (s.coupling_property == true) and (s.stress_event_class == "direct_cross_strait")
+
+# -- P30.test: H21.1a / H21.1b evaluation --------------------------------
+
+MATCH (c:Substrate_Test {predicate: "P30", substrate: s.id, event: e.id}):
+    IF c.p30_predicted_elevation == true and c.p30_delta > 0.10:
+        game_state.p30_h21_1a_pass_count = game_state.p30_h21_1a_pass_count + 1
+        LOG "P30 PASS — coupling + direct-cross-strait + delta>0.10 (H21.1a confirmed)" LEVEL "info"
+    IF c.p30_predicted_elevation == true and c.p30_delta <= 0.10:
+        game_state.p30_h21_1a_fail_count = game_state.p30_h21_1a_fail_count + 1
+        LOG "P30 FAIL — coupling + direct-cross-strait but delta<=0.10 (H21.1a falsified at event)" LEVEL "warn"
+    IF c.p30_predicted_elevation == false and abs(c.p30_delta) < 0.10:
+        game_state.p30_h21_1b_pass_count = game_state.p30_h21_1b_pass_count + 1
+        LOG "P30 PASS — non-elevation predicted and |delta|<0.10 (H21.1b confirmed)" LEVEL "info"
+    IF c.p30_predicted_elevation == false and abs(c.p30_delta) >= 0.10:
+        game_state.p30_h21_1b_fail_count = game_state.p30_h21_1b_fail_count + 1
+        LOG "P30 FAIL — non-elevation predicted but |delta|>=0.10 (H21.1b falsified at event)" LEVEL "warn"
+
+# Day-21 H21.1 test data (cron-C commit 5abc425, falsification verdict INCONCLUSIVE
+# at 2/4 against pre-committed rule filed at commits 134b09b and 5388040):
+#
+#   ROK 005930.KS ↔ TSM @ PEL_2022 (direct-cross-strait):   delta=+0.252 → P30 PASS (H21.1a)
+#   ROK 005930.KS ↔ TSM @ DUV_2023 (semis-policy):          delta=-0.046 → P30 PASS (H21.1b)
+#   ROK 005930.KS ↔ TSM @ LAI_2024 (symbolic-political):    delta=-0.033 → P30 PASS (H21.1b)
+#   ROK 005930.KS ↔ TSM @ PRC_2025 (direct-cross-strait):   delta=+0.411 → P30 PASS (H21.1a)
+#
+# At P30 level (refined H21.1a + H21.1b), all 4 events pass. The verdict
+# difference between H21.1 (INCONCLUSIVE) and P30 (4/4 PASS post-refinement)
+# is the structural point: the refined hypothesis pair fits the data, but
+# the refinement was filed AFTER the pre-committed test ran, so per
+# pre-registration discipline (skill §invariants + Day-19/20 P28 audit
+# precedent), Day-21 reports H21.1 INCONCLUSIVE as the verdict and files
+# H21.1a/b for Day-22+ blind testing. P30 here encodes the refined predicate
+# for forward audit cycles, not as a Day-21 re-derivation.
+
+# ═══════════════════════════════════════════════════════════════════════════
 # STOCHASTIC EXTENSIONS — pending q1_gww3_documentation closure
 # ═══════════════════════════════════════════════════════════════════════════
 #
@@ -528,6 +635,18 @@ MATCH (c:Substrate_Test {predicate: "P28", substrate: s.id}):
 #           electoral_cycle_proximity
 #       )
 #   ) | partial_information(internal_us_exec_deliberation)
+#
+#   STOCHASTIC: substrate.coupling_property_market_signal_delta ~ Distribution(
+#       direct_cross_strait_stress: ~ N(mu = 0.30, sigma = 0.15),  // H21.1 PEL_2022 + PRC_2025 fit
+#       semis_policy_stress:        ~ N(mu = 0.00, sigma = 0.05),  // H21.1 DUV_2023 fit
+#       symbolic_political_stress:  ~ N(mu = 0.00, sigma = 0.05)   // H21.1 LAI_2024 fit
+#   ) | gated_on(coupling_property == true and event_class)
+#   // Day-21 (Nexus #1) addition. Promotes P30 deterministic predicate to
+#   // a stochastic event-class-conditional correlation distribution. Parameters
+#   // fit on the H21.1 4-event run (cron-C commit 5abc425). Requires v1.3
+#   // grammar (struct_literal + Normal-distribution syntax). Forward audit
+#   // cycles for Day-22+ test India and any new stress events against this
+#   // distribution per H21.1a/b refined hypothesis pair.
 #
 # All stochastic extensions remain blocked under q1_gww3_documentation
 # (open since 2026-04-30; 15 days at this fire). The deterministic
