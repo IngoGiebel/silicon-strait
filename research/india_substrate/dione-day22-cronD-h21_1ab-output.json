@@ -1,0 +1,413 @@
+{
+  "method": {
+    "rolling_window_days": 60,
+    "event_window_trading_days": 20,
+    "return_type": "log adjusted-close",
+    "correlation_type": "Pearson rolling-60",
+    "summary_statistic": "within-pair median of correlation in stress vs baseline windows; \u03b4 = stress_median \u2212 baseline_median",
+    "stress_window_definition": "union of \u00b120-trading-day windows around each of the 6 stress events",
+    "baseline_window_definition": "all other rolling-60 observations after warmup"
+  },
+  "tickers_pulled": [
+    "TSM",
+    "TATAELXSI.NS",
+    "^CNXIT",
+    "INDA"
+  ],
+  "date_range_pulled": {
+    "start": "2020-04-01",
+    "end": "2026-05-29",
+    "n_rows": 1598
+  },
+  "stress_events": [
+    {
+      "id": "Galwan_2020",
+      "date": "2020-06-15",
+      "label": "Galwan Valley LAC clash"
+    },
+    {
+      "id": "PEL_2022",
+      "date": "2022-08-02",
+      "label": "Pelosi Taipei visit"
+    },
+    {
+      "id": "Tawang_2022",
+      "date": "2022-12-09",
+      "label": "Tawang LAC scuffle"
+    },
+    {
+      "id": "DUV_2023",
+      "date": "2023-09-04",
+      "label": "Dutch DUV ratchet"
+    },
+    {
+      "id": "LAI_2024",
+      "date": "2024-05-20",
+      "label": "Lai Ching-te inauguration"
+    },
+    {
+      "id": "PRC_2025a",
+      "date": "2025-10-10",
+      "label": "PRC CMOT port-fee announcement"
+    },
+    {
+      "id": "PRC_2025i",
+      "date": "2025-10-14",
+      "label": "PRC port-fee implementation"
+    }
+  ],
+  "per_event_pair_results": {
+    "Galwan_2020": {
+      "IND_TATAELXSI": {
+        "pair_id": "IND_TATAELXSI",
+        "event_id": "Galwan_2020",
+        "event_date": "2020-06-15",
+        "window_start": "2020-07-10",
+        "window_end": "2020-08-07",
+        "n_obs_in_window": 21,
+        "median_corr": -0.0976825952372956,
+        "min_corr": -0.17809205324127178,
+        "max_corr": 0.021092184142865022,
+        "iqr_corr": 0.10989843244438197
+      },
+      "IND_CNXIT": {
+        "pair_id": "IND_CNXIT",
+        "event_id": "Galwan_2020",
+        "event_date": "2020-06-15",
+        "window_start": "2020-07-10",
+        "window_end": "2020-08-07",
+        "n_obs_in_window": 21,
+        "median_corr": -0.05953290753472471,
+        "min_corr": -0.12275963045833677,
+        "max_corr": 0.012219170728986095,
+        "iqr_corr": 0.04112460160565379
+      },
+      "IND_INDA": {
+        "pair_id": "IND_INDA",
+        "event_id": "Galwan_2020",
+        "event_date": "2020-06-15",
+        "window_start": "2020-06-26",
+        "window_end": "2020-07-28",
+        "n_obs_in_window": 21,
+        "median_corr": 0.551958877973239,
+        "min_corr": 0.3189862938052803,
+        "max_corr": 0.6262746398730878,
+        "iqr_corr": 0.08645118328328788
+      }
+    },
+    "PEL_2022": {
+      "IND_TATAELXSI": {
+        "pair_id": "IND_TATAELXSI",
+        "event_id": "PEL_2022",
+        "event_date": "2022-08-02",
+        "window_start": "2022-07-01",
+        "window_end": "2022-09-09",
+        "n_obs_in_window": 41,
+        "median_corr": 0.16898649846505784,
+        "min_corr": 0.04677336966327987,
+        "max_corr": 0.2594316578291961,
+        "iqr_corr": 0.10114438306758014
+      },
+      "IND_CNXIT": {
+        "pair_id": "IND_CNXIT",
+        "event_id": "PEL_2022",
+        "event_date": "2022-08-02",
+        "window_start": "2022-07-01",
+        "window_end": "2022-09-09",
+        "n_obs_in_window": 41,
+        "median_corr": 0.22463311011406922,
+        "min_corr": 0.1299840937845368,
+        "max_corr": 0.2943979194423,
+        "iqr_corr": 0.10040313479371518
+      },
+      "IND_INDA": {
+        "pair_id": "IND_INDA",
+        "event_id": "PEL_2022",
+        "event_date": "2022-08-02",
+        "window_start": "2022-07-01",
+        "window_end": "2022-08-30",
+        "n_obs_in_window": 41,
+        "median_corr": 0.5822793839383089,
+        "min_corr": 0.5051714375277044,
+        "max_corr": 0.6428023913986445,
+        "iqr_corr": 0.07664015044032135
+      }
+    },
+    "Tawang_2022": {
+      "IND_TATAELXSI": {
+        "pair_id": "IND_TATAELXSI",
+        "event_id": "Tawang_2022",
+        "event_date": "2022-12-09",
+        "window_start": "2022-11-07",
+        "window_end": "2023-01-12",
+        "n_obs_in_window": 41,
+        "median_corr": 0.04568325113537836,
+        "min_corr": -0.0009162446589637491,
+        "max_corr": 0.08384885737581245,
+        "iqr_corr": 0.023885021401214852
+      },
+      "IND_CNXIT": {
+        "pair_id": "IND_CNXIT",
+        "event_id": "Tawang_2022",
+        "event_date": "2022-12-09",
+        "window_start": "2022-11-07",
+        "window_end": "2023-01-12",
+        "n_obs_in_window": 41,
+        "median_corr": 0.17981200856250182,
+        "min_corr": 0.13732369910786832,
+        "max_corr": 0.21996210652599266,
+        "iqr_corr": 0.029099743632330838
+      },
+      "IND_INDA": {
+        "pair_id": "IND_INDA",
+        "event_id": "Tawang_2022",
+        "event_date": "2022-12-09",
+        "window_start": "2022-11-09",
+        "window_end": "2023-01-12",
+        "n_obs_in_window": 41,
+        "median_corr": 0.5794859252950333,
+        "min_corr": 0.5451233350175066,
+        "max_corr": 0.6282290726729814,
+        "iqr_corr": 0.02512696334093667
+      }
+    },
+    "DUV_2023": {
+      "IND_TATAELXSI": {
+        "pair_id": "IND_TATAELXSI",
+        "event_id": "DUV_2023",
+        "event_date": "2023-09-04",
+        "window_start": "2023-08-03",
+        "window_end": "2023-10-10",
+        "n_obs_in_window": 41,
+        "median_corr": 0.14672704788621857,
+        "min_corr": 0.090859582855258,
+        "max_corr": 0.32421796539722136,
+        "iqr_corr": 0.14348764949670098
+      },
+      "IND_CNXIT": {
+        "pair_id": "IND_CNXIT",
+        "event_id": "DUV_2023",
+        "event_date": "2023-09-04",
+        "window_start": "2023-08-03",
+        "window_end": "2023-10-10",
+        "n_obs_in_window": 41,
+        "median_corr": 0.04768387433792531,
+        "min_corr": 0.002487563419862616,
+        "max_corr": 0.09836080403897948,
+        "iqr_corr": 0.03880448347515769
+      },
+      "IND_INDA": {
+        "pair_id": "IND_INDA",
+        "event_id": "DUV_2023",
+        "event_date": "2023-09-04",
+        "window_start": "2023-08-07",
+        "window_end": "2023-10-04",
+        "n_obs_in_window": 41,
+        "median_corr": 0.398314191361365,
+        "min_corr": 0.2673064848561022,
+        "max_corr": 0.49485594887401524,
+        "iqr_corr": 0.09338714220918093
+      }
+    },
+    "LAI_2024": {
+      "IND_TATAELXSI": {
+        "pair_id": "IND_TATAELXSI",
+        "event_id": "LAI_2024",
+        "event_date": "2024-05-20",
+        "window_start": "2024-04-16",
+        "window_end": "2024-06-27",
+        "n_obs_in_window": 41,
+        "median_corr": 0.07474481139062161,
+        "min_corr": -0.14460503690852852,
+        "max_corr": 0.2083029299699846,
+        "iqr_corr": 0.13679678687749963
+      },
+      "IND_CNXIT": {
+        "pair_id": "IND_CNXIT",
+        "event_id": "LAI_2024",
+        "event_date": "2024-05-20",
+        "window_start": "2024-04-16",
+        "window_end": "2024-06-27",
+        "n_obs_in_window": 41,
+        "median_corr": 0.11789373901758661,
+        "min_corr": 0.036024184889864926,
+        "max_corr": 0.3106687189262394,
+        "iqr_corr": 0.13455402430804825
+      },
+      "IND_INDA": {
+        "pair_id": "IND_INDA",
+        "event_id": "LAI_2024",
+        "event_date": "2024-05-20",
+        "window_start": "2024-04-22",
+        "window_end": "2024-06-21",
+        "n_obs_in_window": 41,
+        "median_corr": 0.304533116951495,
+        "min_corr": 0.251031991856691,
+        "max_corr": 0.382336241048344,
+        "iqr_corr": 0.07068557892483573
+      }
+    },
+    "PRC_2025a": {
+      "IND_TATAELXSI": {
+        "pair_id": "IND_TATAELXSI",
+        "event_id": "PRC_2025a",
+        "event_date": "2025-10-10",
+        "window_start": "2025-09-10",
+        "window_end": "2025-11-13",
+        "n_obs_in_window": 41,
+        "median_corr": 0.25401001354083924,
+        "min_corr": 0.19848945634078513,
+        "max_corr": 0.32891931880668535,
+        "iqr_corr": 0.032471765738026626
+      },
+      "IND_CNXIT": {
+        "pair_id": "IND_CNXIT",
+        "event_id": "PRC_2025a",
+        "event_date": "2025-10-10",
+        "window_start": "2025-09-10",
+        "window_end": "2025-11-13",
+        "n_obs_in_window": 41,
+        "median_corr": 0.1577162162846606,
+        "min_corr": 0.07916798038880381,
+        "max_corr": 0.21242980940292192,
+        "iqr_corr": 0.044834804558607194
+      },
+      "IND_INDA": {
+        "pair_id": "IND_INDA",
+        "event_id": "PRC_2025a",
+        "event_date": "2025-10-10",
+        "window_start": "2025-09-12",
+        "window_end": "2025-11-07",
+        "n_obs_in_window": 41,
+        "median_corr": 0.09609958256785373,
+        "min_corr": 0.022539776609952912,
+        "max_corr": 0.24256607631869487,
+        "iqr_corr": 0.04285726754290868
+      }
+    },
+    "PRC_2025i": {
+      "IND_TATAELXSI": {
+        "pair_id": "IND_TATAELXSI",
+        "event_id": "PRC_2025i",
+        "event_date": "2025-10-14",
+        "window_start": "2025-09-12",
+        "window_end": "2025-11-17",
+        "n_obs_in_window": 41,
+        "median_corr": 0.25470678129159235,
+        "min_corr": 0.19848945634078513,
+        "max_corr": 0.32891931880668535,
+        "iqr_corr": 0.03733552241481414
+      },
+      "IND_CNXIT": {
+        "pair_id": "IND_CNXIT",
+        "event_id": "PRC_2025i",
+        "event_date": "2025-10-14",
+        "window_start": "2025-09-12",
+        "window_end": "2025-11-17",
+        "n_obs_in_window": 41,
+        "median_corr": 0.1523193490791451,
+        "min_corr": 0.07916798038880381,
+        "max_corr": 0.21242980940292192,
+        "iqr_corr": 0.04204340394759706
+      },
+      "IND_INDA": {
+        "pair_id": "IND_INDA",
+        "event_id": "PRC_2025i",
+        "event_date": "2025-10-14",
+        "window_start": "2025-09-16",
+        "window_end": "2025-11-11",
+        "n_obs_in_window": 41,
+        "median_corr": 0.09609958256785373,
+        "min_corr": 0.022539776609952912,
+        "max_corr": 0.1900730043941823,
+        "iqr_corr": 0.04256599376552819
+      }
+    }
+  },
+  "per_pair_aggregate": {
+    "IND_TATAELXSI": {
+      "stress_median": 0.11636820245927022,
+      "baseline_median": 0.09109448886387514,
+      "delta": 0.025273713595395084,
+      "n_stress": 228,
+      "n_baseline": 1065,
+      "stress_q1": 0.04869354910609867,
+      "stress_q3": 0.22789006040385076,
+      "baseline_q1": -0.015615945421168105,
+      "baseline_q3": 0.16529061949980012,
+      "pair_id": "IND_TATAELXSI",
+      "class": "firm_specific_tata_psmc_downstream",
+      "left": "TATAELXSI.NS",
+      "right": "TSM",
+      "delta_classification": "H21_1b_alternative_coupling_property_empirically_null"
+    },
+    "IND_CNXIT": {
+      "stress_median": 0.14914823620193632,
+      "baseline_median": 0.13160376281687822,
+      "delta": 0.0175444733850581,
+      "n_stress": 228,
+      "n_baseline": 1059,
+      "stress_q1": 0.06135817699764785,
+      "stress_q3": 0.18965496079325878,
+      "baseline_q1": 0.04549214649507931,
+      "baseline_q3": 0.21919403107259397,
+      "pair_id": "IND_CNXIT",
+      "class": "sector_specific_nifty_it",
+      "left": "^CNXIT",
+      "right": "TSM",
+      "delta_classification": "H21_1b_alternative_coupling_property_empirically_null"
+    },
+    "IND_INDA": {
+      "stress_median": 0.429638016966655,
+      "baseline_median": 0.3766575204188761,
+      "delta": 0.052980496547778866,
+      "n_stress": 228,
+      "n_baseline": 1210,
+      "stress_q1": 0.28230774762827787,
+      "stress_q3": 0.5662577063009735,
+      "baseline_q1": 0.2627722545004155,
+      "baseline_q3": 0.5079050058288676,
+      "pair_id": "IND_INDA",
+      "class": "country_specific_msci_india_broad",
+      "left": "INDA",
+      "right": "TSM",
+      "delta_classification": "blind_pre_registered_in_interval"
+    }
+  },
+  "ladder": {
+    "ordered_high_to_low": [
+      {
+        "pair_id": "IND_INDA",
+        "delta": 0.052980496547778866
+      },
+      {
+        "pair_id": "IND_TATAELXSI",
+        "delta": 0.025273713595395084
+      },
+      {
+        "pair_id": "IND_CNXIT",
+        "delta": 0.0175444733850581
+      }
+    ],
+    "gaps": {
+      "tata_minus_cnxit": 0.007729240210336982,
+      "cnxit_minus_inda": -0.035436023162720764,
+      "tata_minus_inda": -0.027706782952383782
+    },
+    "reading": "mixed_signal_inconclusive_ladder"
+  },
+  "primary_pair_verdict": {
+    "pair_id": "IND_TATAELXSI",
+    "delta": 0.025273713595395084,
+    "classification": "H21_1b_alternative_coupling_property_empirically_null",
+    "blind_pre_registered_interval": [
+      0.05,
+      0.1
+    ],
+    "h21_1a_alternative_threshold": 0.1,
+    "h21_1b_alternative_band": [
+      -0.05,
+      0.05
+    ]
+  }
+}
