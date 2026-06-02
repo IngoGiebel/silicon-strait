@@ -658,3 +658,121 @@ MATCH (c:Substrate_Test {predicate: "P30", substrate: s.id, event: e.id}):
 #       parameterized stochastic shells into simulations/game_theory.py
 #       for the ROC-player additions (sister artifact to the planned
 #       Day-7 simulation file).
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Day-23 (2026-06-02) — Schema v1.2 promotion (Path B)
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# Reference: research/methodology/dione-day23-cronE-v12-vocabulary-lock-
+# 2026-06-02.md. Path B falsification criterion met: 9/9 v1.2-stable rows
+# under retrospective re-classification + 3/9 rows whose v1.2 split
+# contradicts v1.1 single-value (JPN, ROK, IND). UK admitted as Row-10
+# under v1.2 (INDIRECT/NEUTRAL/DORMANT). Schema v1.2 promoted.
+#
+# The v1.1 `coupling` field is deprecated. Custom v1.1 tokens INTER_KOREAN
+# and INDIRECT_BILATERAL are retired; their substantive content moves to
+# (a) the v1.2 textual/operational axis split and (b) the
+# strategic_autonomy_constraint field (extended to {ACTIVE,
+# ACTIVE_AGGREGATE, DORMANT, N/A_self}; the v1.1 N/A_implicit_v1.0 token
+# is retired — every row now carries an explicit value).
+#
+# ── Schema v1.2 record (substrate_dynamics) ─────────────────────────────
+#
+#   substrate_dynamics(s) {
+#     formal_anchor,                       # {A.1_self, A.2, A.3, A.3_strict, A.3_aggregate, A.3 (1970-wave-early), A.3 (1972-wave), A.4_ASEAN, A.4_originator}
+#     coupling_textual,                    # v1.2: {NONE, INDIRECT, DIRECT}
+#     coupling_operational,                # v1.2: multi-valued subset of {NEGATIVE, NEUTRAL, POSITIVE_INDUSTRIAL, POSITIVE_DIPLOMATIC, DIRECT_STATUTORY}
+#     ceiling,                             # {TIER_1, TIER_2, TIER_2_LOW, N/A}
+#     kappa_status,                        # {ACTIVE, DORMANT, N/A}
+#     strategic_autonomy_constraint        # v1.2: {ACTIVE, ACTIVE_AGGREGATE, DORMANT, N/A_self}
+#   }
+#
+# ── v1.1 → v1.2 migration (retrospective re-classification) ─────────────
+#
+#   US  : DIRECT_STATUTORY                                           → coupling_textual=DIRECT,   coupling_operational=DIRECT_STATUTORY                          ; strategic_autonomy_constraint=DORMANT
+#   JPN : DIRECT                                                     → coupling_textual=INDIRECT, coupling_operational=POSITIVE_INDUSTRIAL                       ; strategic_autonomy_constraint=DORMANT
+#   ROK : INTER_KOREAN                                               → coupling_textual=INDIRECT, coupling_operational=POSITIVE_INDUSTRIAL                       ; strategic_autonomy_constraint=ACTIVE
+#   EU  : INDIRECT                                                   → coupling_textual=INDIRECT, coupling_operational=NEUTRAL                                   ; strategic_autonomy_constraint=ACTIVE_AGGREGATE
+#   PRC : N/A_self                                                   → coupling_textual=N/A_self, coupling_operational=N/A_self                                  ; strategic_autonomy_constraint=N/A_self
+#   PHL : INDIRECT_BILATERAL                                         → coupling_textual=INDIRECT, coupling_operational=POSITIVE_DIPLOMATIC                       ; strategic_autonomy_constraint=ACTIVE
+#   AUS : INDIRECT                                                   → coupling_textual=INDIRECT, coupling_operational=NEUTRAL                                   ; strategic_autonomy_constraint=DORMANT
+#   CAN : INDIRECT                                                   → coupling_textual=INDIRECT, coupling_operational=NEUTRAL                                   ; strategic_autonomy_constraint=DORMANT
+#   IND : NONE_TEXTUAL/OPERATIONAL_POSITIVE_INDUSTRIAL (compound)    → coupling_textual=NONE,     coupling_operational=POSITIVE_INDUSTRIAL,POSITIVE_DIPLOMATIC   ; strategic_autonomy_constraint=ACTIVE
+#   UK  : (new Row-10 admission under v1.2)                          → coupling_textual=INDIRECT, coupling_operational=NEUTRAL                                   ; strategic_autonomy_constraint=DORMANT
+#
+# ── P29.3 — per-substrate Nexus binding, axis-stratified (deterministic) ─
+
+MATCH (s:Substrate):
+    LET op_axis = s.coupling_operational
+    LET tx_axis = s.coupling_textual
+    LET active_pair = CASE
+        WHEN op_axis != NEUTRAL AND op_axis != N/A_self THEN s.operational_pair_ticker
+        WHEN tx_axis != NONE    AND tx_axis != N/A_self THEN s.textual_pair_ticker
+        ELSE NULL
+    END
+    IF active_pair == NULL:
+        LOG "P29.3 NO-PAIR for substrate (NEUTRAL operational + NONE textual)" LEVEL "info"
+    ELIF s.chip_exposure_for(active_pair) > 0.05:
+        LOG "P29.3 PASS on substrate at axis-stratified pair" LEVEL "info"
+    ELSE:
+        LOG "P29.3 NO-BINDING (chip_exposure below 0.05 single-ticker threshold)" LEVEL "info"
+
+# Empirical anchors (cross-Day-21/22 retro-classified at v1.2):
+#   US  / NVDA (operational-axis pair):       ChipExposure ≈ 0.03 → P29.3 NO-BINDING (single-ticker; mega-cap concentration artefact)
+#   JPN / 8035.T (operational-axis pair):     ChipExposure < 0.05 → P29.3 NO-BINDING (single-ticker; TSMC Kumamoto fab not parent-anchored to 8035.T)
+#   ROK / 005930.KS (operational-axis pair):  ChipExposure ≈ 0.5–0.6 → P29.3 PASS (Samsung Foundry tier-1)
+#   EU  / AIR.PA (operational-axis NEUTRAL → textual-axis fallback): textual_pair_ticker = EZU (pending Day-24 forward-test)
+#   IND / TATAELXSI (operational-axis pair):  ChipExposure pending H22.2b 2027-Q1 retest → P29.3 PROVISIONAL
+#   IND / INDA (textual-axis pair):           ChipExposure low at firm-level; macro/EM-flow channel signal δ=0.053 (Day-22)
+#   UK  / EWU (textual-axis pair, operational NEUTRAL): pending Day-24+ forward-test
+
+# ── P30.3 — coupling-property → market correlation, axis-stratified ─────
+
+MATCH (c:Substrate_Test {predicate: "P30.3", substrate: s.id, event: e.id, axis: a.id}):
+    LET delta_t = c.delta(axis: "textual",     pair: s.textual_pair_ticker)
+    LET delta_o = c.delta(axis: "operational", pair: s.operational_pair_ticker)
+    IF a.id == "textual" AND s.coupling_textual != NONE:
+        IF e.class == "diplomatic_register_stress" AND delta_t > 0.10:
+            LOG "P30.3 PASS textual — H21.1a-v1.2 confirmed at event" LEVEL "info"
+        ELIF e.class != "diplomatic_register_stress" AND ABS(delta_t) < 0.10:
+            LOG "P30.3 PASS textual — H21.1b-v1.2 confirmed at event" LEVEL "info"
+        ELSE:
+            LOG "P30.3 FAIL textual — verdict computed at event" LEVEL "warn"
+    IF a.id == "operational" AND s.coupling_operational has_any [POSITIVE_INDUSTRIAL, DIRECT_STATUTORY]:
+        IF e.class == "industrial_supply_chain_stress" AND delta_o > 0.10:
+            LOG "P30.3 PASS operational — H21.1a-v1.2 confirmed at event" LEVEL "info"
+        ELIF e.class != "industrial_supply_chain_stress" AND ABS(delta_o) < 0.10:
+            LOG "P30.3 PASS operational — H21.1b-v1.2 confirmed at event" LEVEL "info"
+        ELSE:
+            LOG "P30.3 FAIL operational — verdict computed at event" LEVEL "warn"
+
+# Empirical anchors (cross-Day-21/22 retro-classified at v1.2):
+#   IND × INDA (textual-axis) @ Day-22 stress window δ=+0.053 → P30.3 PASS textual (in pre-registered interval; H21.1a-v1.2 confirmed at country-broad ETF)
+#   IND × TATAELXSI (operational-axis) @ Day-22 stress window δ=+0.025 → P30.3 PASS operational H21.1b-v1.2 (stress window was textual-class not operational-class; null delta at operational-axis pair is the predicted v1.2 behavior)
+#   ROK × 005930.KS (operational-axis) @ Day-21 events: 4/4 PASS at H21.1a/b distinction (already canonicalised at Day-21 P30 deterministic)
+#   ROK × EWY (textual-axis) — pre-registered Day-24 cron-A forward-test (§4.3 methodology doc)
+
+# ── P_v12_fail — v1.2 → v1.3 falsification predicate (deterministic) ────
+
+MATCH (m:SchemaMigrationGuard {schema_version: "v1.2"}):
+    LET F1_fired = ANY (s:Substrate) WHERE s.coupling_financial != NULL AND s.coupling_financial != IMPLIED_BY(s.coupling_operational, s.coupling_textual)
+    LET F2_fired = m.corpus_size >= 12 AND cramers_v(m.corpus, axis_a: "coupling_textual", axis_b: "coupling_operational") > 0.5
+    LET F3_fired = ANY (s:Substrate, w:SourcePullWindow) WHERE classify(s.coupling_textual, w.early) != classify(s.coupling_textual, w.late) AND w.diff_in_ministerial_only(s)
+    IF F1_fired OR F2_fired OR F3_fired:
+        LOG "P_v12_fail FIRED — promote schema v1.2 → v1.3; publish research/methodology/dione-day-N-v12-falsification.md" LEVEL "warn"
+        m.promotion_pending = "v1.3"
+    ELSE:
+        LOG "P_v12_fail QUIESCENT — schema v1.2 holds" LEVEL "info"
+
+# ── Hassaleh-Nexus instrument graph axis-tag (engineering ticket update) ─
+#
+# Instrument nodes added at Day-22 §7.1 are re-stratified under v1.2:
+#   INDA       → axis = textual_pair,              status = ACTIVE  (Day-22 δ=0.053 macro/EM-flow channel)
+#   TATAELXSI  → axis = operational_pair_industrial, status = DORMANT (Day-22 δ=0.025; promotion-gated on H22.2b 2027-Q1 retest)
+#   CNXIT      → axis = operational_pair_sector,    status = DORMANT (sector ETF too dilute for firm-specific operational signal)
+#
+# Substrate nodes carry coupling_textual + coupling_operational as two
+# properties (replacing v1.1 single coupling property). Cross-substrate
+# edges encode (λ-class × textual-correlation × operational-correlation)
+# triples (replacing v1.1 (λ-class × coupling × correlation) triples).
+# Sprint-15 ticket scope retained; v1.2 migration is same-sprint extension.
