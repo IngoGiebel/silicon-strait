@@ -1,0 +1,72 @@
+{
+  "status": "ok",
+  "pulled_at": "2026-06-03T09:07:00+00:00",
+  "source": "yfinance",
+  "method": "auto_adjust=False, then prefer Adj Close",
+  "window_requested": {
+    "start": "2022-10-01",
+    "end_exclusive": "2026-05-31"
+  },
+  "tickers_requested": [
+    "SPY",
+    "EWJ",
+    "EWY",
+    "EZU",
+    "TSM"
+  ],
+  "tickers_pulled": [
+    "SPY",
+    "EWJ",
+    "EWY",
+    "EZU",
+    "TSM"
+  ],
+  "failures": [],
+  "per_ticker": {
+    "SPY": {
+      "first_date": "2022-10-03",
+      "last_date": "2026-05-29",
+      "n_obs": 917,
+      "first_close": 349.8431701660156,
+      "last_close": 756.47998046875,
+      "nan_in_window": 0
+    },
+    "EWJ": {
+      "first_date": "2022-10-03",
+      "last_date": "2026-05-29",
+      "n_obs": 917,
+      "first_close": 45.4178466796875,
+      "last_close": 92.95999908447266,
+      "nan_in_window": 0
+    },
+    "EWY": {
+      "first_date": "2022-10-03",
+      "last_date": "2026-05-29",
+      "n_obs": 917,
+      "first_close": 44.53422164916992,
+      "last_close": 205.8300018310547,
+      "nan_in_window": 0
+    },
+    "EZU": {
+      "first_date": "2022-10-03",
+      "last_date": "2026-05-29",
+      "n_obs": 917,
+      "first_close": 29.954267501831055,
+      "last_close": 68.77999877929688,
+      "nan_in_window": 0
+    },
+    "TSM": {
+      "first_date": "2022-10-03",
+      "last_date": "2026-05-29",
+      "n_obs": 917,
+      "first_close": 65.53378295898438,
+      "last_close": 418.45001220703125,
+      "nan_in_window": 0
+    }
+  },
+  "files": {
+    "wide_csv": "tickers_wide.csv",
+    "tidy_csv": "tickers_tidy.csv"
+  },
+  "purpose": "Day-24 cron-C H24.1 correlation matrix inputs (textual axis: SPY/EWJ/EWY/EZU x TSM); wide history enables both full-window AND Day-21 stress-window-anchored analyses per cron-A scoping risk #2."
+}
