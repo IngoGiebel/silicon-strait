@@ -197,8 +197,17 @@ def main() -> int:
             "pre_committed_pass_interval": [-0.3, 0.3],
         },
     }
-    OUT.write_text(json.dumps(out, indent=2))
-    print(json.dumps({"verdict": verdict, "ranked": ranked, "output": str(OUT.name)}, indent=2))
+    def _np_default(o):
+        if isinstance(o, np.integer):
+            return int(o)
+        if isinstance(o, np.floating):
+            return float(o)
+        if isinstance(o, np.ndarray):
+            return o.tolist()
+        raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+
+    OUT.write_text(json.dumps(out, indent=2, default=_np_default))
+    print(json.dumps({"verdict": verdict, "ranked": ranked, "output": str(OUT.name)}, indent=2, default=_np_default))
     return 0
 
 

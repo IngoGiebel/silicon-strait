@@ -1,0 +1,139 @@
+{
+  "computed_at": "2026-06-03T12:02:10+00:00",
+  "input_data": "research/cross_substrate/dione-day24-cronB-data/tickers_wide.csv",
+  "method": {
+    "log_returns": "log(P_t / P_{t-1})",
+    "rolling_window_td": 60,
+    "stress_half_width_td": 20,
+    "delta": "median(rolling_corr | stress) - median(rolling_corr | baseline)",
+    "pair_anchor": "TSM"
+  },
+  "full_window": {
+    "first_date": "2022-10-04",
+    "last_date": "2026-05-29",
+    "n_returns": 916
+  },
+  "stress_anchors": {
+    "DUV_2023": {
+      "anchor": "2023-01-27",
+      "in_data": true,
+      "window_first": "2022-12-28",
+      "window_last": "2023-02-27",
+      "n_td": 41
+    },
+    "LAI_2024": {
+      "anchor": "2024-01-13",
+      "in_data": true,
+      "window_first": "2023-12-14",
+      "window_last": "2024-02-13",
+      "n_td": 41
+    },
+    "PRC_2025": {
+      "anchor": "2025-10-10",
+      "in_data": true,
+      "window_first": "2025-09-12",
+      "window_last": "2025-11-07",
+      "n_td": 41
+    }
+  },
+  "n_stress_td": 123,
+  "n_baseline_td": 793,
+  "per_substrate": {
+    "US": {
+      "ticker": "SPY",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.6282056233815033,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.627314055611414,
+      "baseline_median_rolling_corr": 0.5931188758833126,
+      "delta": 0.03419517972810138,
+      "blind_interval": [
+        -0.05,
+        0.05
+      ],
+      "inside_blind_interval": true
+    },
+    "JPN": {
+      "ticker": "EWJ",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.4912347408302294,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.4796619322919054,
+      "baseline_median_rolling_corr": 0.4249949548110093,
+      "delta": 0.054666977480896106,
+      "blind_interval": [
+        0.0,
+        0.05
+      ],
+      "inside_blind_interval": false
+    },
+    "ROK": {
+      "ticker": "EWY",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.5272239420752797,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.5505138319674285,
+      "baseline_median_rolling_corr": 0.5581920289271927,
+      "delta": -0.0076781969597641275,
+      "blind_interval": [
+        0.05,
+        0.1
+      ],
+      "inside_blind_interval": false
+    },
+    "EU": {
+      "ticker": "EZU",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.5274460549153682,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.5719191491124567,
+      "baseline_median_rolling_corr": 0.49232981109477075,
+      "delta": 0.07958933801768592,
+      "blind_interval": [
+        -0.03,
+        0.05
+      ],
+      "inside_blind_interval": false
+    }
+  },
+  "h24_1": {
+    "predicted_ordering": [
+      "ROK",
+      "JPN",
+      "EU",
+      "US"
+    ],
+    "permutation_equivalent": [
+      "ROK",
+      "JPN",
+      "US",
+      "EU"
+    ],
+    "observed_ordering": [
+      "EU",
+      "JPN",
+      "US",
+      "ROK"
+    ],
+    "rok_at_top": false,
+    "n_outside_blind_interval": 3,
+    "verdict": "INCONCLUSIVE",
+    "verdict_reason": "ROK not at top of \u03b4 ordering (observed: EU).; 3 substrates outside blind intervals."
+  },
+  "h21_1c_orthogonality": {
+    "status": "BLOCKED",
+    "blocker": "Day-23 \u00a74.4 operational-axis \u03b4 values FAIL Nisaba audit (abbf875): 4/6 cells not reproducible from cited Day-21 source; AIR.PA conflicts with v1.2 EU=NEUTRAL classification. Pearson(\u03b4_textual, \u03b4_operational) cannot be computed until q-day24-1 (\u00a74.4 repair-path) resolves.",
+    "pre_committed_pass_interval": [
+      -0.3,
+      0.3
+    ]
+  }
+}
