@@ -1,0 +1,41 @@
+{
+  "status": "ok_structural_gap",
+  "pulled_at": "2026-06-04T09:10:00+00:00",
+  "ticker_requested": "005930.KS",
+  "anchor": "TSM",
+  "window": {
+    "start": "2022-10-01",
+    "end": "2026-05-31",
+    "end_exclusive": true
+  },
+  "join_calendar": "NYSE (Day-24 cron-B TSM index)",
+  "joined_rows": 917,
+  "first_date": "2022-10-03",
+  "last_date": "2026-05-29",
+  "forward_fill": {
+    "max_tdays": 1,
+    "count": 38,
+    "ratio": 0.04143947655398037,
+    "flag_threshold": 0.05,
+    "flag_provisional": false
+  },
+  "volume_gate": {
+    "median_shares": 17003179.5,
+    "floor_shares": 1000000,
+    "floor_met": true
+  },
+  "nan_gate": {
+    "total_nan_cells": 17,
+    "per_column": {
+      "005930.KS": 17,
+      "TSM": 0
+    },
+    "halt_rule_clarified_2026_06_04": "halt only on TSM-side NaN; KRX-side NaN is structural (dropped by cron-C .dropna() per Day-24 convention)",
+    "halt_fired": false,
+    "structural_gap_note": "17 KRX-side rows are >1-td-gap structural closures (Lunar New Year, Chuseok, etc.); cron-C harness drops them via .dropna()"
+  },
+  "outputs": [
+    "tickers_005930ks.csv",
+    "tickers_wide.csv"
+  ]
+}
