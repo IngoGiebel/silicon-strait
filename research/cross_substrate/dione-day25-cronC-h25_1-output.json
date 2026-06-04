@@ -1,0 +1,69 @@
+{
+  "computed_at": "2026-06-04T12:02:29+00:00",
+  "pre_registration": "research/cross_substrate/dione-day25-cronA-rok-firm-level-pre-registration-2026-06-04.md (commit 3f396fc)",
+  "errata": "research/methodology/dione-day25-cronB-h25_1-pre-registration-errata-2026-06-04.md (this Day-25 cron-B fire)",
+  "input_data": "research/cross_substrate/dione-day25-cronB-data/tickers_wide.csv",
+  "method": {
+    "log_returns": "log(P_t / P_{t-1})",
+    "rolling_window_td": 60,
+    "stress_half_width_td": 20,
+    "delta_primary": "median(rolling_corr | stress) - median(rolling_corr | baseline)",
+    "delta_secondary": "mean(rolling_corr | stress) - mean(rolling_corr | baseline)",
+    "verdict_uses": "median (per Day-24 calibration convention)",
+    "pair": "005930.KS x TSM",
+    "join_calendar": "NYSE (Day-24 cron-B TSM index); KRX ffill-limit-1; then .dropna()"
+  },
+  "full_window": {
+    "first_date": "2022-10-05",
+    "last_date": "2026-05-29",
+    "n_returns": 891
+  },
+  "stress_anchors": {
+    "DUV_2023": {
+      "anchor": "2023-01-27",
+      "in_data": true,
+      "window_first": "2022-12-23",
+      "window_last": "2023-02-27",
+      "n_td": 41
+    },
+    "LAI_2024": {
+      "anchor": "2024-01-13",
+      "in_data": true,
+      "window_first": "2023-12-14",
+      "window_last": "2024-02-15",
+      "n_td": 41
+    },
+    "PRC_2025": {
+      "anchor": "2025-10-10",
+      "in_data": true,
+      "window_first": "2025-09-08",
+      "window_last": "2025-11-10",
+      "n_td": 41
+    }
+  },
+  "n_stress_td": 123,
+  "n_baseline_td": 768,
+  "rolling_n_stress": 120,
+  "rolling_n_baseline": 712,
+  "n_pair_obs_after_dropna": 891,
+  "n_dropped_asymmetric_calendar": 25,
+  "full_window_pearson": 0.13539605448566477,
+  "stress_median_rolling_corr": 0.185813876636444,
+  "baseline_median_rolling_corr": 0.13125626345258418,
+  "stress_mean_rolling_corr": 0.19270302410132736,
+  "baseline_mean_rolling_corr": 0.1403736694984948,
+  "delta_median": 0.05455761318385982,
+  "delta_mean": 0.052329354602832556,
+  "h25_1": {
+    "verdict_path": "b_measurement_quality",
+    "verdict_path_via_mean": "b_measurement_quality",
+    "verdict_consensus": "agree",
+    "verdict_intervals": {
+      "a_schema_update": "delta < -0.001",
+      "inconclusive": "-0.001 <= delta <= 0.05",
+      "b_measurement_quality": "delta > 0.05"
+    },
+    "day24_ewy_benchmark_delta": -0.0077,
+    "delta_vs_day24_ewy_median": 0.06225761318385982
+  }
+}
