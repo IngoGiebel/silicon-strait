@@ -1,0 +1,147 @@
+{
+  "computed_at": "2026-06-05T12:01:23+00:00",
+  "input_data": "research/cross_substrate/dione-day26-cronB-data/tickers_wide.csv",
+  "m_25_1_amendment_applied": true,
+  "amendment_note": "Day-25 cron-D protocol amendment M-25-1 retires EWY as ROK textual-axis ticker; H26.1 substitutes 005930.KS into the ROK slot for the Day-24 H24.1 4-substrate sweep, mirroring all other Day-24 method parameters exactly.",
+  "method": {
+    "log_returns": "log(P_t / P_{t-1})",
+    "rolling_window_td": 60,
+    "stress_half_width_td": 20,
+    "delta": "median(rolling_corr | stress) - median(rolling_corr | baseline)",
+    "pair_anchor": "TSM"
+  },
+  "full_window": {
+    "first_date": "2022-10-04",
+    "last_date": "2026-05-29",
+    "n_returns": 916
+  },
+  "stress_anchors": {
+    "DUV_2023": {
+      "anchor": "2023-01-27",
+      "in_data": true,
+      "window_first": "2022-12-28",
+      "window_last": "2023-02-27",
+      "n_td": 41
+    },
+    "LAI_2024": {
+      "anchor": "2024-01-13",
+      "in_data": true,
+      "window_first": "2023-12-14",
+      "window_last": "2024-02-13",
+      "n_td": 41
+    },
+    "PRC_2025": {
+      "anchor": "2025-10-10",
+      "in_data": true,
+      "window_first": "2025-09-12",
+      "window_last": "2025-11-07",
+      "n_td": 41
+    }
+  },
+  "n_stress_td": 123,
+  "n_baseline_td": 793,
+  "per_substrate": {
+    "US": {
+      "ticker": "SPY",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.6282056233815033,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.627314055611414,
+      "baseline_median_rolling_corr": 0.5931188758833126,
+      "delta": 0.03419517972810138,
+      "blind_interval": [
+        -0.05,
+        0.05
+      ],
+      "inside_blind_interval": true
+    },
+    "JPN": {
+      "ticker": "EWJ",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.4912347408302294,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.4796619322919057,
+      "baseline_median_rolling_corr": 0.4249949548110093,
+      "delta": 0.054666977480896384,
+      "blind_interval": [
+        0.0,
+        0.05
+      ],
+      "inside_blind_interval": false
+    },
+    "ROK": {
+      "ticker": "005930.KS",
+      "n_pair_obs": 891,
+      "full_window_pearson": 0.13539605448566477,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 113,
+      "rolling_n_baseline": 719,
+      "stress_median_rolling_corr": 0.18479810966713467,
+      "baseline_median_rolling_corr": 0.1332973750881494,
+      "delta": 0.05150073457898527,
+      "blind_interval": [
+        0.05,
+        0.1
+      ],
+      "inside_blind_interval": true
+    },
+    "EU": {
+      "ticker": "EZU",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.5274460549153682,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.5719191491124566,
+      "baseline_median_rolling_corr": 0.49232981109477075,
+      "delta": 0.0795893380176858,
+      "blind_interval": [
+        -0.03,
+        0.05
+      ],
+      "inside_blind_interval": false
+    }
+  },
+  "h26_1": {
+    "predicted_ordering": [
+      "ROK",
+      "JPN",
+      "EU",
+      "US"
+    ],
+    "permutation_equivalent": [
+      "ROK",
+      "JPN",
+      "US",
+      "EU"
+    ],
+    "observed_ordering": [
+      "EU",
+      "JPN",
+      "ROK",
+      "US"
+    ],
+    "rok_at_top": false,
+    "rok_at_bottom": false,
+    "rok_delta": 0.05150073457898527,
+    "n_outside_blind_interval": 2,
+    "verdict": "INCONCLUSIVE",
+    "verdict_reason": "ROK at rank #3 (not #1); 2 substrates outside blind intervals (>1)"
+  },
+  "comparison_to_day_24": {
+    "day_24_etf_level_verdict": "INCONCLUSIVE",
+    "day_24_etf_level_observed_ordering": [
+      "EU",
+      "JPN",
+      "US",
+      "ROK"
+    ],
+    "day_24_etf_level_rok_delta": -0.0077,
+    "day_25_firm_level_h25_1_rok_delta_005930ks_x_tsm": 0.0546,
+    "note": "H26.1 verdict is the firm-level cross-substrate sweep under M-25-1; compare against Day-24 ETF-level result to assess whether the M-25-1 amendment rehabilitates the directional H24.1 prediction."
+  }
+}
