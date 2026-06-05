@@ -1,0 +1,76 @@
+{
+  "status": "ok_structural_gap",
+  "staged_at": "2026-06-05T09:12:10+00:00",
+  "purpose": "Day-26 cron-B data pre-stage for H26.1 (firm-level re-test of H24.1 under M-25-1)",
+  "method": "join-from-locked-sources (no fresh yfinance pull; preserves pre-commitment integrity)",
+  "tickers_assembled": {
+    "US": "SPY",
+    "JPN": "EWJ",
+    "ROK": "005930.KS",
+    "EU": "EZU",
+    "anchor": "TSM"
+  },
+  "tickers_retired_under_M_25_1": [
+    "EWY"
+  ],
+  "sources": {
+    "day24": {
+      "path": "cross_substrate/dione-day24-cronB-data/tickers_wide.csv",
+      "sha256": "6aa13db03d3759f929959b5ea1cdad436e939e93caaf3c95677685fa0e1f0bd5",
+      "columns_used": [
+        "SPY",
+        "EWJ",
+        "EZU",
+        "TSM"
+      ],
+      "first_date": "2022-10-03",
+      "last_date": "2026-05-29",
+      "n_rows": 917
+    },
+    "day25": {
+      "path": "cross_substrate/dione-day25-cronB-data/tickers_wide.csv",
+      "sha256": "778cebfe5150b1e4eeb1464fb1647eeded3d083ac78ca812af64d7664adbc1f1",
+      "columns_used": [
+        "005930.KS",
+        "TSM"
+      ],
+      "first_date": "2022-10-03",
+      "last_date": "2026-05-29",
+      "n_rows": 917
+    }
+  },
+  "tsm_consistency_check": {
+    "day24_bit_eq_day25": false,
+    "day24_allclose_day25": true,
+    "ulp_drift_rows": 26,
+    "relative_tolerance": 1e-12,
+    "rule": "Day-24 and Day-25 cron-B TSM series must agree within float64 CSV-roundtrip tolerance (rtol=1e-12). Both are NYSE-calendar adjusted close 2022-10-03..2026-05-29. Any ULP-level drift is CSV-serialization roundoff at the 13th significant digit (<<1e-4 — below the precision of any reported δ); deeper divergence would indicate a re-pull and is treated as a halt."
+  },
+  "joined": {
+    "first_date": "2022-10-03",
+    "last_date": "2026-05-29",
+    "n_rows": 917,
+    "columns": [
+      "SPY",
+      "EWJ",
+      "005930.KS",
+      "EZU",
+      "TSM"
+    ]
+  },
+  "nan_gate": {
+    "total_nan_cells": 17,
+    "per_column": {
+      "SPY": 0,
+      "EWJ": 0,
+      "005930.KS": 17,
+      "EZU": 0,
+      "TSM": 0
+    },
+    "halt_rule": "halt only on TSM-side NaN; ROK-side NaN is structural KRX-calendar gap (cron-C drops via .dropna() per Day-24 convention)",
+    "halt_fired": false,
+    "structural_gap_note_rok": "17 ROK-side NaN cells carried over from Day-25 cron-B (Lunar New Year, Chuseok structural closures); cron-C harness drops via .dropna()"
+  },
+  "output": "tickers_wide.csv",
+  "next_step": "Execute dione-day26-cronC-h26_1-firm-level-retest.py at Day-26 cron-C 14:00 CEST"
+}
