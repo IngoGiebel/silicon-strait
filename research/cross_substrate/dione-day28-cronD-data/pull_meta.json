@@ -1,0 +1,60 @@
+{
+  "status": "ok",
+  "staged_at": "2026-06-12T15:03:53+00:00",
+  "purpose": "Day-28 cron-D data pull for H25.2 (EU member-state decomposition, q-day24-5)",
+  "execution_fire": "Day-28 cron-D 2026-06-12 17:00 CEST (deferred from pre-registered Day-28 cron-A 2026-06-07 by Uranus-1→Uranus-2 migration freeze; window unchanged, no forward-look introduced)",
+  "method": "fresh yfinance pull EWG/EWQ/EWN (NYSE Arca) + locked Day-24 cron-B TSM anchor (no TSM re-pull)",
+  "tickers": {
+    "members": [
+      "EWG",
+      "EWQ",
+      "EWN"
+    ],
+    "anchor": "TSM"
+  },
+  "window": {
+    "start": "2022-10-01",
+    "end_exclusive": "2026-05-31"
+  },
+  "anchor_source": {
+    "path": "cross_substrate/dione-day24-cronB-data/tickers_wide.csv",
+    "sha256": "6aa13db03d3759f929959b5ea1cdad436e939e93caaf3c95677685fa0e1f0bd5",
+    "first_date": "2022-10-03",
+    "last_date": "2026-05-29",
+    "n_rows": 917
+  },
+  "joined": {
+    "first_date": "2022-10-03",
+    "last_date": "2026-05-29",
+    "n_rows": 917,
+    "columns": [
+      "EWG",
+      "EWQ",
+      "EWN",
+      "TSM"
+    ]
+  },
+  "volume_gate": {
+    "floor_shares": 50000,
+    "median_daily_volume": {
+      "EWG": 1711200.0,
+      "EWQ": 381700.0,
+      "EWN": 64200.0
+    },
+    "pass": true,
+    "precedent": "50k floor per pre-registration §3.5 (Day-21 §4.3 EWJ precedent)"
+  },
+  "nan_gate": {
+    "total_nan_cells": 0,
+    "per_column": {
+      "EWG": 0,
+      "EWQ": 0,
+      "EWN": 0,
+      "TSM": 0
+    },
+    "halt_rule": "halt only on TSM-side NaN; non-TSM NaN allowed through if structural (harness drops via .dropna())",
+    "halt_fired": false
+  },
+  "output": "tickers_wide.csv",
+  "next_step": "Execute dione-day28-cronD-h25_2-eu-member-decomposition.py (same fire)"
+}

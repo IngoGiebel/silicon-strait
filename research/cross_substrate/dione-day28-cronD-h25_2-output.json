@@ -1,0 +1,122 @@
+{
+  "test": "H25.2",
+  "computed_at": "2026-06-12T15:05:27+00:00",
+  "execution_fire": "Day-28 cron-D 2026-06-12 17:00 CEST (Uranus-2; deferred from pre-registered Day-28 cron-A 2026-06-07 by migration freeze; window/method/intervals unmodified)",
+  "pre_registration": "research/cross_substrate/dione-day25-cronB-eu-member-state-decomposition-pre-registration-2026-06-04.md",
+  "data": "dione-day28-cronD-data/tickers_wide.csv",
+  "full_window": {
+    "first_date": "2022-10-04",
+    "last_date": "2026-05-29",
+    "n_returns": 916
+  },
+  "stress_anchors": {
+    "DUV_2023": {
+      "anchor": "2023-01-27",
+      "in_data": true,
+      "window_first": "2022-12-28",
+      "window_last": "2023-02-27",
+      "n_td": 41
+    },
+    "LAI_2024": {
+      "anchor": "2024-01-13",
+      "in_data": true,
+      "window_first": "2023-12-14",
+      "window_last": "2024-02-13",
+      "n_td": 41
+    },
+    "PRC_2025": {
+      "anchor": "2025-10-10",
+      "in_data": true,
+      "window_first": "2025-09-12",
+      "window_last": "2025-11-07",
+      "n_td": 41
+    }
+  },
+  "n_stress_td": 123,
+  "n_baseline_td": 793,
+  "pairs": {
+    "EWG": {
+      "member_state": "Germany",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.48467181494789613,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.5548556429999952,
+      "baseline_median_rolling_corr": 0.4416766583735108,
+      "delta": 0.11317898462648446,
+      "delta_mean_secondary": 0.05196966190805363,
+      "median_mean_disagreement_flag": false,
+      "per_anchor_delta_informational": {
+        "DUV_2023": 0.21145214378962562,
+        "LAI_2024": 0.11317898462648446,
+        "PRC_2025": -0.06082243005636445
+      },
+      "pre_committed_interval": [
+        0.02,
+        0.07
+      ],
+      "inside_pre_committed_interval": false
+    },
+    "EWQ": {
+      "member_state": "France",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.4539607035311388,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.5334384980500372,
+      "baseline_median_rolling_corr": 0.39606026992092824,
+      "delta": 0.13737822812910894,
+      "delta_mean_secondary": 0.039359554675306996,
+      "median_mean_disagreement_flag": false,
+      "per_anchor_delta_informational": {
+        "DUV_2023": 0.2362034193006859,
+        "LAI_2024": 0.13737822812910894,
+        "PRC_2025": -0.19344018884942596
+      },
+      "pre_committed_interval": [
+        0.0,
+        0.06
+      ],
+      "inside_pre_committed_interval": false
+    },
+    "EWN": {
+      "member_state": "Netherlands",
+      "n_pair_obs": 916,
+      "full_window_pearson": 0.6515269502692579,
+      "rolling_window_td": 60,
+      "rolling_n_stress": 123,
+      "rolling_n_baseline": 734,
+      "stress_median_rolling_corr": 0.6559992168054468,
+      "baseline_median_rolling_corr": 0.6424761438638522,
+      "delta": 0.013523072941594605,
+      "delta_mean_secondary": -0.01819488560123317,
+      "median_mean_disagreement_flag": true,
+      "per_anchor_delta_informational": {
+        "DUV_2023": 0.07739416895428741,
+        "LAI_2024": 0.013523072941594605,
+        "PRC_2025": -0.10152441890740649
+      },
+      "pre_committed_interval": [
+        0.08,
+        0.18
+      ],
+      "inside_pre_committed_interval": false
+    }
+  },
+  "combined": {
+    "deltas": {
+      "EWG": 0.11317898462648446,
+      "EWQ": 0.13737822812910894,
+      "EWN": 0.013523072941594605
+    },
+    "mean_delta": 0.08802676189906267,
+    "ezu_reference_delta_h24_1": 0.0796,
+    "n_pairs_above_+0.05": 2,
+    "anomalous_mixed_sign_edge_case": false
+  },
+  "combined_verdict_path": "b_ezu_constituent_weighting_artifact",
+  "pattern_match": "2 of three δ > +0.05 (need 3) BUT mean(δ)=+0.0880 ≥ +0.0796",
+  "pre_registered_action": "Measurement-protocol amendment: EU textual-axis = ASML.AS × TSM or sector-decomposed instrument, not EZU. v1.2 schema unchanged; reading-α EU basis undermined."
+}
