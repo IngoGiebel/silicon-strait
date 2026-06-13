@@ -1,0 +1,259 @@
+{
+  "artifact": "reading-\u03b2 prior table (Day-29 cron-C BEGIN \u2014 preliminary)",
+  "pre_registration": "research/methodology/dione-day29-cronA-reading-beta-execution-pre-registration-2026-06-13.md",
+  "pre_registration_commit": "29f8c8e",
+  "prior_window": "Day-1..Day-24 (substrate-extension era)",
+  "min_n": 5,
+  "mask_convention": "global_nyse (\u00a73.4)",
+  "status": "PRELIMINARY \u2014 cron-C BEGIN. Manifest = cron-C archaeology sweep. Full verification, IND-comparability ruling, AUS/CAN/PHL/UK zero-confirmation, and Nisaba \u00a74 audit are cron-D/cron-E work. Commit-or-defer call at Sprint-16 boundary 2026-06-19.",
+  "substrates": {
+    "US": {
+      "instrument": [
+        "SPY"
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [
+        {
+          "day": 24,
+          "date": "2026-06-03",
+          "instrument": "SPY",
+          "delta": 0.03419517972810138,
+          "source": "research/cross_substrate/dione-day24-cronC-output.json:51"
+        }
+      ],
+      "delta_series": [
+        0.03419517972810138
+      ],
+      "n": 1,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": 0.03419517972810138,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=1 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "JPN": {
+      "instrument": [
+        "EWJ"
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [
+        {
+          "day": 24,
+          "date": "2026-06-03",
+          "instrument": "EWJ",
+          "delta": 0.054666977480896106,
+          "source": "research/cross_substrate/dione-day24-cronC-output.json:67"
+        }
+      ],
+      "delta_series": [
+        0.054666977480896106
+      ],
+      "n": 1,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": 0.054666977480896106,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=1 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "ROK": {
+      "instrument": [
+        "EWY"
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [],
+      "delta_series": [],
+      "n": 0,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": null,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=0 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "rok_instrument_discontinuity": {
+        "prior_instrument": "005930.KS (M-25-1)",
+        "excluded_ewy_era_days": [
+          {
+            "day": 24,
+            "delta": -0.0076781969597641275
+          }
+        ],
+        "note": "005930.KS in-scope days within Day-1..Day-24 = 0 (005930.KS enters Day-25). EWY-era excluded not merged. ROK prior is empty in this window."
+      },
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "EU": {
+      "instrument": [
+        "EZU"
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [
+        {
+          "day": 24,
+          "date": "2026-06-03",
+          "instrument": "EZU",
+          "delta": 0.07958933801768592,
+          "source": "research/cross_substrate/dione-day24-cronC-output.json:99"
+        }
+      ],
+      "delta_series": [
+        0.07958933801768592
+      ],
+      "n": 1,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": 0.07958933801768592,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=1 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "IND": {
+      "instrument": [
+        "INDA"
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [
+        {
+          "day": 22,
+          "date": "2026-06-01",
+          "instrument": "INDA",
+          "delta": 0.052980496547778866,
+          "source": "research/india_substrate/dione-day22-cronD-h21_1ab-output.json:363"
+        }
+      ],
+      "delta_series": [
+        0.052980496547778866
+      ],
+      "n": 1,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": 0.052980496547778866,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=1 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "comparability_caveats": [
+        "7-event India set, not 3-anchor cross-strait set"
+      ],
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "AUS": {
+      "instrument": [
+        null
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [],
+      "delta_series": [],
+      "n": 0,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": null,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=0 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "CAN": {
+      "instrument": [
+        null
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [],
+      "delta_series": [],
+      "n": 0,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": null,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=0 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "PHL": {
+      "instrument": [
+        null
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [],
+      "delta_series": [],
+      "n": 0,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": null,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=0 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    },
+    "UK": {
+      "instrument": [
+        null
+      ],
+      "mask": "global_nyse",
+      "prior_window": "Day-1..Day-24 (substrate-extension era)",
+      "in_scope_days": [],
+      "delta_series": [],
+      "n": 0,
+      "min_n": 5,
+      "low_power_flag": true,
+      "verdict_emittable": false,
+      "median_prior": null,
+      "pctile_10": null,
+      "pctile_90": null,
+      "pctile_suppressed_reason": "n=0 < min_n=5; 10th/90th-percentile degenerate. Verdict suppressed (reported, not emitted) per \u00a73.3/\u00a73.4 low-power rule.",
+      "anchor_era_priors": null,
+      "pooled_prior_masks_sign_opposite_regimes": null,
+      "anchor_era_overlay_status": "not_computable_from_available_data: the Day-24 cross-substrate sweep persisted pooled \u03b4 only (no per-anchor DUV/LAI/PRC legs). The secondary stratification overlay requires per-anchor legs per substrate-day; computing it needs re-running the Day-24 sweep with per-anchor output. Logged, not silently skipped (\u00a76)."
+    }
+  },
+  "headline_finding": {
+    "substrates_with_emittable_verdict": [],
+    "substrates_low_power_suppressed": [
+      "US",
+      "JPN",
+      "ROK",
+      "EU",
+      "IND",
+      "AUS",
+      "CAN",
+      "PHL",
+      "UK"
+    ],
+    "reading": "NO substrate reaches min_n=5 in the Day-1..Day-24 window: the project ran one cross-substrate textual-axis sweep (Day-24) plus the Day-22 IND measurement, so every substrate's prior is n<=1. Under the frozen \u00a73 rules the \u03b2-v1 prior emits ZERO verdicts (all low-power suppressed). ROK is empty (EWY excluded, 005930.KS outside window). This is a load-bearing input to the 2026-06-19 commit-or-defer call: \u03b2-v1 as pre-registered is not constructible on this window. Remedies (each its own pre-registration, never a retrofit per \u00a76): (a) extend the prior window past Day-24 to admit accumulated live-era \u03b4; (b) lower min_n; (c) defer \u03b2. Decision is NOT taken here."
+  }
+}
