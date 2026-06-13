@@ -1,0 +1,56 @@
+{
+  "status": "ok",
+  "staged_at": "2026-06-13T09:04:19+00:00",
+  "test": "H25.3",
+  "purpose": "Day-29 cron-B data pull for H25.3 (ASML.AS × TSM firm-level channel test)",
+  "execution_fire": "Day-29 cron-B 2026-06-13 11:00 CEST (Uranus-2); pull postdates pre-reg commit 29f8c8e",
+  "pre_registration": "research/cross_substrate/dione-day29-cronA-h25_3-asml-firm-level-pre-registration-2026-06-13.md",
+  "pre_registration_commit": "29f8c8e",
+  "integrity": "no ASML.AS price series existed pre-pull (grep-verified Day-29 cron-A); pull postdates pushed pre-reg",
+  "method": "fresh yfinance pull ASML.AS (Euronext Amsterdam, native calendar) + locked Day-24 cron-B TSM anchor (no TSM re-pull)",
+  "tickers": {
+    "firm": "ASML.AS",
+    "anchor": "TSM"
+  },
+  "window": {
+    "start": "2022-10-01",
+    "end_exclusive": "2026-05-31"
+  },
+  "anchor_source": {
+    "path": "cross_substrate/dione-day24-cronB-data/tickers_wide.csv",
+    "sha256": "6aa13db03d3759f929959b5ea1cdad436e939e93caaf3c95677685fa0e1f0bd5",
+    "first_date": "2022-10-03",
+    "last_date": "2026-05-29",
+    "n_rows": 917
+  },
+  "calendar_asymmetry": {
+    "n_nyse_trading_days": 917,
+    "n_asml_native_trading_days": 933,
+    "n_co_trading_days_global_mask": 906,
+    "n_nyse_open_amsterdam_closed_nan_before_ffill": 11,
+    "n_recovered_by_ffill_limit1_isolated": 11,
+    "n_amsterdam_open_nyse_closed_dropped_by_global_mask": 27,
+    "note": "Global mask = NYSE calendar (TSM index), no ffill; structural ASML NaN from Amsterdam-only closures drop per-pair downstream. Pair-isolated mask = same reindex + ffill(limit=1), mirroring Day-25 H25.1 005930.KS treatment."
+  },
+  "volume_gate": {
+    "floor_shares": 50000,
+    "median_daily_volume_on_nyse_calendar": 604149.5,
+    "pass": true,
+    "precedent": "50k floor per pre-registration §3.5 (Day-21 §4.3 EWJ precedent)"
+  },
+  "nan_gate": {
+    "global_join_total_nan_cells": 11,
+    "global_join_per_column": {
+      "ASML.AS": 11,
+      "TSM": 0
+    },
+    "halt_rule": "halt only on TSM-side NaN; ASML.AS-side structural NaN allowed through",
+    "halt_fired": false
+  },
+  "outputs": {
+    "native": "tickers_asml_native.csv",
+    "global_mask": "tickers_wide_global.csv",
+    "pair_isolated": "tickers_wide_isolated.csv"
+  },
+  "next_step": "Execute dione-day29-cronB-h25_3-asml-firm-level.py (same fire)"
+}

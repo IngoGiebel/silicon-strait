@@ -1,0 +1,136 @@
+{
+  "test": "H25.3",
+  "computed_at": "2026-06-13T09:04:26+00:00",
+  "execution_fire": "Day-29 cron-B 2026-06-13 11:00 CEST (Uranus-2)",
+  "pre_registration": "research/cross_substrate/dione-day29-cronA-h25_3-asml-firm-level-pre-registration-2026-06-13.md",
+  "pre_registration_commit": "29f8c8e",
+  "instrument": "ASML.AS × TSM (firm-level; q-day28-1 default — ASML.AS alone)",
+  "method": {
+    "log_returns": "log(P_t / P_{t-1})",
+    "rolling_window_td": 60,
+    "stress_half_width_td": 20,
+    "delta_primary": "median(rolling_corr | stress) - median(rolling_corr | baseline), pooled across 3 anchors",
+    "delta_secondary": "mean(rolling_corr | stress) - mean(rolling_corr | baseline)",
+    "verdict_uses": "median (Day-24 calibration convention)",
+    "verdict_assigned_on": "global NYSE-mask δ (§3.4)"
+  },
+  "blind_intervals": {
+    "H_sc_supply_chain": [
+      0.1,
+      0.25
+    ],
+    "H_id_idiosyncratic_hedge": [
+      -0.15,
+      0.05
+    ],
+    "dead_band_inconclusive_exclusive": [
+      0.05,
+      0.1
+    ]
+  },
+  "global_mask": {
+    "n_pair_obs_after_dropna": 894,
+    "n_dropped_asymmetric_calendar": 22,
+    "full_window_first": "2022-10-04",
+    "full_window_last": "2026-05-29",
+    "full_window_pearson": 0.5212261826126142,
+    "stress_anchors": {
+      "DUV_2023": {
+        "anchor": "2023-01-27",
+        "in_data": true,
+        "window_first": "2022-12-28",
+        "window_last": "2023-02-27",
+        "n_td": 41
+      },
+      "LAI_2024": {
+        "anchor": "2024-01-13",
+        "in_data": true,
+        "window_first": "2023-12-12",
+        "window_last": "2024-02-13",
+        "n_td": 41
+      },
+      "PRC_2025": {
+        "anchor": "2025-10-10",
+        "in_data": true,
+        "window_first": "2025-09-12",
+        "window_last": "2025-11-07",
+        "n_td": 41
+      }
+    },
+    "n_stress_td": 123,
+    "n_baseline_td": 771,
+    "rolling_n_stress": 123,
+    "rolling_n_baseline": 712,
+    "stress_median_rolling_corr": 0.5194347080955772,
+    "baseline_median_rolling_corr": 0.544415570786978,
+    "pooled_delta": -0.024980862691400763,
+    "pooled_delta_mean_secondary": -0.014995795051366279,
+    "per_anchor_delta": {
+      "DUV_2023": 0.02072803215900898,
+      "LAI_2024": -0.08562224160233317,
+      "PRC_2025": -0.031115598612216577
+    }
+  },
+  "pair_isolated_mask": {
+    "n_pair_obs_after_dropna": 916,
+    "n_dropped_asymmetric_calendar": 0,
+    "full_window_first": "2022-10-04",
+    "full_window_last": "2026-05-29",
+    "full_window_pearson": 0.5162968949583074,
+    "stress_anchors": {
+      "DUV_2023": {
+        "anchor": "2023-01-27",
+        "in_data": true,
+        "window_first": "2022-12-28",
+        "window_last": "2023-02-27",
+        "n_td": 41
+      },
+      "LAI_2024": {
+        "anchor": "2024-01-13",
+        "in_data": true,
+        "window_first": "2023-12-14",
+        "window_last": "2024-02-13",
+        "n_td": 41
+      },
+      "PRC_2025": {
+        "anchor": "2025-10-10",
+        "in_data": true,
+        "window_first": "2025-09-12",
+        "window_last": "2025-11-07",
+        "n_td": 41
+      }
+    },
+    "n_stress_td": 123,
+    "n_baseline_td": 793,
+    "rolling_n_stress": 123,
+    "rolling_n_baseline": 734,
+    "stress_median_rolling_corr": 0.5187522055511505,
+    "baseline_median_rolling_corr": 0.5384070673965864,
+    "pooled_delta": -0.019654861845435856,
+    "pooled_delta_mean_secondary": -0.01463397029696134,
+    "per_anchor_delta": {
+      "DUV_2023": 0.026736535549400586,
+      "LAI_2024": -0.08794466185317701,
+      "PRC_2025": -0.025107095221826192
+    }
+  },
+  "mask_reconciliation": {
+    "global_delta": -0.024980862691400763,
+    "pair_isolated_delta": -0.019654861845435856,
+    "offset_global_minus_isolated": -0.005326000845964907,
+    "rok_precedent_offset_day26": -0.0031,
+    "note": "Global mask (no ffill, NYSE calendar) is verdict-bearing; pair-isolated (ffill limit=1) reproduces the H25.1-style treatment. Offset reported, not assumed (Day-26 §3.4 method). Nisaba audit reproduces this reconciliation."
+  },
+  "pooled_delta_interval_classification": {
+    "global": "H_id_interval",
+    "pair_isolated": "H_id_interval"
+  },
+  "verdict_block": {
+    "verdict": "PASS-id",
+    "verdict_rule_branch": "idiosyncratic_hedge_risk_channel_confirmed",
+    "reason": "δ_pooled=-0.0250 ≤ +0.05 AND (δ_PRC=-0.0311 < 0: True) OR (1 anchor leg(s) < −0.05: True).",
+    "consequence": "M-28-1 CONCLUDES: EU textual axis measures risk-channel breadth, not supply-chain depth, at every instrument level (EZU, EWN/EWG/EWQ, ASML.AS). EU textual-axis δ retired from supply-chain interpretation; reading-α stays declined permanently; reading-β sole live methodology track."
+  },
+  "verdict": "PASS-id",
+  "verdict_rule_branch": "idiosyncratic_hedge_risk_channel_confirmed"
+}
